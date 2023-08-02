@@ -1,4 +1,5 @@
-@include('../html/body')
+@include('../layouts/body')
+
 <head>
     <title>Create Game</title>
 </head>

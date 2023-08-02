@@ -1,4 +1,5 @@
 @include('../html/body')
+
 <head>
     <title>Delete Game</title>
 </head>

@@ -1,4 +1,4 @@
-@include('../html/body')
+@include('../layouts/body')
 
 <head>
     <title>Login</title>
