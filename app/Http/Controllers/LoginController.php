@@ -28,7 +28,6 @@ class LoginController extends Controller
         } catch (QueryException $e) {
             // Check if the exception is due to a duplicate entry (email already exists)
             if ($e->getCode() === '23000') {
-                // Email already exists, show an error message to the user
                 return redirect()->back()->withInput()->withErrors(['email' => 'The email already exists.']);
             }
         }
