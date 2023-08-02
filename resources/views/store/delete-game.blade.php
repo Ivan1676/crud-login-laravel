@@ -1,4 +1,5 @@
-@include('../html/body')
+@include('../layouts/body')
+@include('../layouts/navbar')
 
 <head>
     <title>Delete Game</title>

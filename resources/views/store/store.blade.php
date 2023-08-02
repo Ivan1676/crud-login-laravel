@@ -1,15 +1,11 @@
 @include('../layouts/body')
+@include('../layouts/navbar')
 
 <head>
     <title>Store</title>
 </head>
 
-<section class="bg-gray-50 dark:bg-gray-900">
-    <div>
-        <a href="{{ route('logout') }}"
-            class="font-medium text-primary-600 hover:underline dark:text-primary-500">Logout</a>
-    </div>
-
+<section>
     <div class="max-w-5xl mx-auto flex items-center justify-between">
         <!-- Add flex and justify-between to align items in a row -->
         <div>
