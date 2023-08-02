@@ -14,14 +14,18 @@ use App\Http\Controllers\LoginController;
 */
 
 Route::get('/', function () {
-    return view('login/login');
+    if (auth()->check()) {
+        return redirect()->route('store');
+    } else {
+        return view('login/login');
+    }
 });
 
 Route::view('/login', 'login/login')->name('login');
-Route::view('/registro', 'login/register')->name('registro');
-Route::view('/tienda', 'store/store')->name('tienda');
+Route::view('/register', 'login/register')->name('register');
+Route::view('/store', 'store/store')->middleware('auth')->name('store');
 
-Route::post('/inicia-sesion', [LoginController::class, 'login'])->name('iniciar-sesion');
-Route::post('/validar-registro', [LoginController::class, 'register'])->name('validar-registro');
-Route::get('/cerrar-sesion', [LoginController::class, 'logout'])->name('cerrar-sesion');
+Route::post('/start-session', [LoginController::class, 'login'])->name('start-session');
+Route::post('/validate-register', [LoginController::class, 'register'])->name('validate-register');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
