@@ -5,6 +5,7 @@
     <title>Delete Game</title>
 </head>
 
+@if (Auth::user() && Auth::user()->role === 'admin')
 
 <div class="max-w-5xl mx-auto">
     <h1 class="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
@@ -39,3 +40,8 @@
         </span>
     </a>
 </div>
+@else
+    <script>
+        window.location.href = '{{ route("store") }}';
+    </script>
+@endif
