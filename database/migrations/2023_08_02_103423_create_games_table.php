@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('release_date');
             $table->string('developer');
             $table->decimal('price', 10, 2);
+            $table->string('cover');
             $table->timestamps();
         });
     }

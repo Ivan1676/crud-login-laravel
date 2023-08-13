@@ -41,7 +41,10 @@ class GameController extends Controller
             'release_date' => 'required|date',
             'developer' => 'required|min:3',
             'price' => 'required|numeric',
+            'cover' => 'required|url',
         ]);
+
+        $data['cover'] = $request->cover;
 
         Game::create($data);
 
@@ -89,6 +92,7 @@ class GameController extends Controller
             'release_date' => 'required|date',
             'developer' => 'required|min:3',
             'price' => 'required|numeric',
+            'cover' => 'required|url',
         ]);
 
         $game->update($data);

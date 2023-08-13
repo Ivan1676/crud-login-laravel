@@ -16,6 +16,10 @@
         <form action="{{ route('edit-game', ['game' => $game->id]) }}" method="POST">
             @csrf
             @method('PUT') <!-- Correct method for updating a resource -->
+            <div class="mb-4">
+                <label for="cover">Cover url:</label>
+                <input type="text" name="cover" id="cover" class="w-full p-2 border-2 border-blue-500 text-black">
+            </div>
             <div class="mb-2">
                 <label for="name">Name:</label>
                 <input type="text" name="name" id="name" value="{{ $game->name }}"

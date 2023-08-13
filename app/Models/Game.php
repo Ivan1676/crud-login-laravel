@@ -16,5 +16,6 @@ class Game extends Model
         'release_date',
         'developer',
         'price',
+        'cover'
     ];
 }

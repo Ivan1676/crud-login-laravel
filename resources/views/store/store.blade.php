@@ -31,6 +31,9 @@
             <div>
                 @foreach ($games as $game)
                     <div class="border-b-2 border-blue-500 p2 mb-5">
+                        <div>
+                            <img src="{{ $game->cover }}" alt="Game Cover" class="w-32 h-auto">
+                        </div>
                         <div>Name: {{ $game->name }}</div>
                         <div>Description: {{ $game->description }}</div>
                         <div>Genre: {{ $game->genre }}</div>
@@ -74,6 +77,9 @@
         <div>
             @foreach ($games as $game)
                 <div class="border-b-2 border-blue-500 p2 mb-5">
+                    <div>
+                        <img src="{{ $game->cover }}" alt="Game Cover" class="w-32 h-auto">
+                    </div>
                     <div>Name: {{ $game->name }}</div>
                     <div>Description: {{ $game->description }}</div>
                     <div>Genre: {{ $game->genre }}</div>
@@ -87,7 +93,7 @@
                                 class="relative w-32 px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                                 Buy Game
                             </span>
-                        </a>
+                        </button>
                     </div>
                 </div>
             @endforeach
