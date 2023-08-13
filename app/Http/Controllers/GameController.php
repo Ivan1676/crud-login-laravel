@@ -12,9 +12,11 @@ class GameController extends Controller
      */
     public function index()
     {
+        $user = auth()->user(); // Get the authenticated user
         $games = Game::all();
 
         return view('store/store', [
+            'user' => $user,
             'games' => $games
         ]);
     }
