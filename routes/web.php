@@ -33,9 +33,6 @@ Route::view('/contact', 'contact/contact')->middleware('auth')->name('contact');
 
 Route::get('/store', [GameController::class, 'index'])->middleware('auth')->name('store');
 
-Route::post('/send-email', [ContactController::class, 'sendEmail'])->middleware('auth')->name('send-email');
-
-
 Route::post('/start-session', [LoginController::class, 'login'])->name('start-session');
 Route::post('/validate-register', [LoginController::class, 'register'])->name('validate-register');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');

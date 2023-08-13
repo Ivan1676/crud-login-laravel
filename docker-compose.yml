@@ -1,0 +1,19 @@
+version: '3'
+services:
+  app:
+    image: laravel:latest  # Replace with your Laravel image
+    volumes:
+      - ./laravel:/var/www/html
+    ports:
+      - "8000:8000"
+    environment:
+      APP_NAME: Laravel
+      APP_ENV: local
+      APP_KEY: base64:RiJM1kilcnLjqL9fXGuxRDHNm9I+lclFFfyyLpoG+6Y=
+      # Add other Laravel environment variables as needed
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "8025:8025"  # MailHog Web UI
+      - "1025:1025"  # MailHog SMTP Server
