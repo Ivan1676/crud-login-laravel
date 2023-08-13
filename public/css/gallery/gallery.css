@@ -1,8 +1,4 @@
 /**********************GALLERY**********************/
-.logo {
-    width: 5rem;
-}
-
 .gallery{
     white-space: normal;
     min-height: 100vh;
@@ -50,6 +46,7 @@
     overflow: hidden;
     border-width: 15px;
     box-shadow: 0 3px 5px rgb(80, 191, 255);
+    border-color: rgb(23 37 84 / var(--tw-bg-opacity));
     margin: 20px;
     background-color: white;
     background: linear-gradient(100deg, rgba(15, 176, 250, 0.39) 10%, black 70%, rgba(66, 101, 255, 0.466) 10%, black 70%);

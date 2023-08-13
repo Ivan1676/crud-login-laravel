@@ -46,21 +46,29 @@
                 $jsonData = json_decode($json, true);
 
                 $images = $jsonData['images'];
+                $totalImages = count($images);
 
-                foreach ($images as &$image) {
-                    $image['url'] = asset($image['url']); // Construct full URL
+                foreach ($images as $index => $image) {
+                    $image['url'] = asset($image['url']);
+
+                    // Check if this is the last image
+                    $isLastImage = $index === $totalImages - 1;
+
+                    // Display the image
+                    echo '<a href="' . $image['url'] . '" class="image ' . $image['filter'] . '">';
+                    echo '<img src="' . $image['url'] . '" alt="' . $image['filter'] . '" />';
+                    echo '</a>';
+
+                    // Stop the loop if it's the image before the last
+                    if ($isLastImage) {
+                        break;
+                    }
                 }
-
             @endphp
-
-            @foreach ($images as $image)
-                <a href="{{ $image['url'] }}" class="image {{ $image['filter'] }}">
-                    <img src="{{ $image['url'] }}" alt="{{ $image['filter'] }}" />
-                </a>
-            @endforeach
-            <!-- ... -->
         </div>
-        <script src="{{ asset('js/gallery/gallery.js') }}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+
+    </div>
+    <script src="{{ asset('js/gallery/gallery.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
 </body>
