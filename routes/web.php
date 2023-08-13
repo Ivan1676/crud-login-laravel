@@ -28,6 +28,7 @@ Route::view('/login', 'login/login')->name('login');
 Route::view('/register', 'login/register')->name('register');
 Route::view('/store', 'store/store')->middleware('auth')->name('store');
 Route::view('/gallery', 'gallery/gallery')->middleware('auth')->name('gallery');
+Route::view('/contact', 'contact/contact')->middleware('auth')->name('contact');
 
 Route::get('/store', [GameController::class, 'index'])->middleware('auth')->name('store');
 
