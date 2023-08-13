@@ -4,6 +4,7 @@ use App\Models\Game;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\ContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +32,8 @@ Route::view('/gallery', 'gallery/gallery')->middleware('auth')->name('gallery');
 Route::view('/contact', 'contact/contact')->middleware('auth')->name('contact');
 
 Route::get('/store', [GameController::class, 'index'])->middleware('auth')->name('store');
+
+Route::post('/send-email', [ContactController::class, 'sendEmail'])->middleware('auth')->name('send-email');
 
 
 Route::post('/start-session', [LoginController::class, 'login'])->name('start-session');
