@@ -1,0 +1,68 @@
+/**********************GALLERY**********************/
+.logo {
+    width: 5rem;
+}
+
+.gallery{
+    white-space: normal;
+    min-height: 100vh;
+    padding-bottom: 100px;
+}
+
+.gallery .controls{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px 0;
+    list-style: none;
+}
+
+.gallery .controls .buttons{
+    height: 40px;
+    width: 140px;
+    background: rgb(34, 33, 33);
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    line-height: 40px;
+    cursor: pointer;
+    margin: 20px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+    text-align: center;
+}
+
+.gallery .controls .buttons.active{
+    background: linear-gradient(100deg, rgb(80, 191, 255) 10%, black 90%, rgb(48, 84, 105) 10%, black 90%);
+    color: #fff;
+}
+
+.gallery .image-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+.gallery .image-container .image{
+    height: 250px;
+    width: 350px;
+    overflow: hidden;
+    border-width: 15px;
+    box-shadow: 0 3px 5px rgb(80, 191, 255);
+    margin: 20px;
+    background-color: white;
+    background: linear-gradient(100deg, rgba(15, 176, 250, 0.39) 10%, black 70%, rgba(66, 101, 255, 0.466) 10%, black 70%);
+
+}
+
+.gallery .image-container .image img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.gallery .image-container .image:hover img{
+    transform: scale(1.4);
+}
+

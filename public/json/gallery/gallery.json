@@ -1,0 +1,56 @@
+{
+    "images": [
+        {
+            "url": "images/gallery/demonsSouls.jpg",
+            "filter": "demonsSouls"
+        },
+        {
+            "url": "images/gallery/demonsSouls2.jpg",
+            "filter": "demonsSouls"
+        },
+        {
+            "url": "images/gallery/darkSouls.jpg",
+            "filter": "darkSouls"
+        },
+        {
+            "url": "images/gallery/darkSouls2.jpg",
+            "filter": "darkSouls"
+        },
+        {
+            "url": "images/gallery/darkSouls3.jpg",
+            "filter": "darkSouls"
+        },
+        {
+            "url": "images/gallery/bloodborne.jpg",
+            "filter": "bloodborne"
+        },
+        {
+            "url": "images/gallery/bloodborne2.jpg",
+            "filter": "bloodborne"
+        },
+        {
+            "url": "images/gallery/bloodborne3.jpg",
+            "filter": "bloodborne"
+        },
+        {
+            "url": "images/gallery/bloodborne4.jpg",
+            "filter": "bloodborne"
+        },
+        {
+            "url": "images/gallery/sekiro.jpg",
+            "filter": "sekiro"
+        },
+        {
+            "url": "images/gallery/sekiro2.jpg",
+            "filter": "sekiro"
+        },
+        {
+            "url": "images/gallery/eldenRing.jpg",
+            "filter": "eldenRing"
+        },
+        {
+            "url": "images/gallery/eldenRing2.jpg",
+            "filter": "eldenRing"
+        }
+    ]
+}

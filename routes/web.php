@@ -27,6 +27,7 @@ Route::get('/', function () {
 Route::view('/login', 'login/login')->name('login');
 Route::view('/register', 'login/register')->name('register');
 Route::view('/store', 'store/store')->middleware('auth')->name('store');
+Route::view('/gallery', 'gallery/gallery')->middleware('auth')->name('gallery');
 
 Route::get('/store', [GameController::class, 'index'])->middleware('auth')->name('store');
 
@@ -36,7 +37,7 @@ Route::post('/validate-register', [LoginController::class, 'register'])->name('v
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
-Route::get('/create', [GameController::class, 'create'])->name('create-game'); 
+Route::get('/create', [GameController::class, 'create'])->name('create-game');
 Route::post('/store', [GameController::class, 'store'])->name('store-game');
 
 Route::get('/edit/{game}', [GameController::class, 'editView'])->name('edit-game');
