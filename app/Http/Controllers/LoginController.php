@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-
+use Illuminate\Auth\Events\Registered;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -17,10 +17,23 @@ class LoginController extends Controller
             $user = new User();
 
             $user->name = $request->name;
+            $user->second_name = $request->second_name;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
-            
+
             $user->save();
+
+            // Determine if the user should be registered as an admin
+            $isAdmin = false;
+            if ($request->email === 'ivan.mosteo.zrg@gmail.com') {
+                $isAdmin = true;
+            }
+
+            if ($isAdmin) {
+                $user->update(['role' => 'admin']);
+            }
+
+            event(new Registered($user)); // Fire the Registered event
 
             Auth::login($user); // Login the user after register
 
@@ -32,6 +45,7 @@ class LoginController extends Controller
             }
         }
     }
+
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
