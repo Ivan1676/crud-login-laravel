@@ -1,9 +1,15 @@
 <head>
     <link href="{{ asset('css/home/slider.css') }}" rel="stylesheet" type="text/css" />
 </head>
+<div>
+    <h1 class="mb-16 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+        <span class="text-transparent bg-clip-text bg-gradient-to-r to-red-600 from-rose-400">
+            THE BEST SALES OF THIS MONTH!
+        </span>
+    </h1>
+</div>
 
-
-<div id="carousel" class="relative w-1/2 h-1/3" data-carousel="slide">
+<div id="carousel" class="relative w-1/2 h-1/3 mb-32" data-carousel="slide">
     <!-- Carousel wrapper -->
     <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
         @foreach ($covers as $cover)
