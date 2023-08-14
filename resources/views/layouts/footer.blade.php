@@ -1,4 +1,4 @@
-<footer class="bg-white dark:bg-gray-900">
+<footer class="bg-white dark:bg-gray-900 w-full" id="footer">
     <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="md:flex md:justify-between">
             <div class="mb-6 md:mb-0">
@@ -23,7 +23,7 @@
                     <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow us</h2>
                     <ul class="text-gray-500 dark:text-gray-400 font-medium">
                         <li class="mb-4">
-                            <a href="https://github.com/themesberg/flowbite" class="hover:underline ">Github</a>
+                            <a href="https://github.com/Ivan1676/crud-login-laravel" class="hover:underline ">Github</a>
                         </li>
                         <li>
                             <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">Discord</a>
@@ -44,7 +44,7 @@
             </div>
         </div>
         <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <div class="sm:flex sm:items-center sm:justify-between">
+        <div class="sm:flex sm:items-center sm:justify-between"> <!-- Cambiar -->
             <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/"
                     class="hover:underline">Flowbite™</a>. All Rights Reserved.
             </span>
@@ -97,3 +97,24 @@
         </div>
     </div>
 </footer>
+
+<style>
+    html {
+        position: relative;
+        min-height: 100%;
+    }
+
+    body {
+        text-align: center;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 274px;
+    }
+
+    footer {
+        position: absolute;
+        bottom: 0;
+        height: 274px;
+    }
+</style>
