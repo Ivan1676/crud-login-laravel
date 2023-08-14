@@ -19,7 +19,7 @@ use App\Http\Controllers\ContactController;
 Route::get('/', function () {
     $games = Game::all();
     if (auth()->check()) {
-        return redirect()->route('store', ['games' => $games]);
+        return redirect()->route('home', ['games' => $games]);
     } else {
         return view('login/login');
     }
@@ -27,10 +27,11 @@ Route::get('/', function () {
 
 Route::view('/login', 'login/login')->name('login');
 Route::view('/register', 'login/register')->name('register');
+Route::view('/home', 'home/index')->middleware('auth')->name('home');
 Route::view('/store', 'store/store')->middleware('auth')->name('store');
+
 Route::view('/gallery', 'gallery/gallery')->middleware('auth')->name('gallery');
 Route::view('/contact', 'contact/contact')->middleware('auth')->name('contact');
-
 Route::get('/store', [GameController::class, 'index'])->middleware('auth')->name('store');
 
 Route::post('/start-session', [LoginController::class, 'login'])->name('start-session');

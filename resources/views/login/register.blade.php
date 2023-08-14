@@ -1,4 +1,4 @@
-@include('../layouts/body')
+@include('layouts/body')
 
 <head>
     <title>Sign up</title>
