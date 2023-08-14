@@ -1,5 +1,6 @@
 @include('layouts/body')
 @include('layouts/navbar')
+@include('layouts/footer')
 
 <head>
     <meta charset="UTF-8">

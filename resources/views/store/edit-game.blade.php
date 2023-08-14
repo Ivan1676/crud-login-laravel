@@ -1,5 +1,6 @@
 @include('layouts/body')
 @include('layouts/navbar')
+@include('layouts/footer')
 
 <head>
     <title>Edit Game</title>
