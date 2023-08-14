@@ -116,7 +116,6 @@
                     </div>
                 </div>
             @endforeach
-@endif
-</div>
-</section>
+        </div>
+    </section>
 @endif
