@@ -120,4 +120,15 @@ class GameController extends Controller
         $game->delete();
         return redirect()->route('store');
     }
+    public function showSlider()
+    {
+        $games = Game::all();
+        $covers = $games->pluck('cover'); // Assuming 'cover' is the field name for cover URLs
+        $name = $games->pluck('name');
+
+        return view('home.index', [
+            'covers' => $covers,
+            'name' => $name
+        ]);
+    }
 }

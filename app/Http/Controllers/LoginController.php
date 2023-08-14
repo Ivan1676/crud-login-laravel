@@ -53,7 +53,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) { //check if the user exists
             $request->session()->regenerate();
 
-            return redirect()->route('store');
+            return redirect()->route('home');
         }
 
         return back()->withErrors([

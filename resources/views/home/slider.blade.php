@@ -1,31 +1,17 @@
-<div id="default-carousel" class="relative w-full" data-carousel="slide">
+<head>
+    <link href="{{ asset('css/home/slider.css') }}" rel="stylesheet" type="text/css" />
+</head>
+
+
+<div id="carousel" class="relative w-1/2 h-1/3" data-carousel="slide">
     <!-- Carousel wrapper -->
     <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-        <!-- Item 1 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="https://gaming-cdn.com/images/products/857/orig/dark-souls-3-pc-juego-steam-cover.jpg?v=1644693960"
-                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 2 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="https://image.api.playstation.com/vulcan/img/rnd/202010/2815/pnmEoLGTLV31ZiT8EzISvsp4.jpg"
-                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 3 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2015/11/538540-analisis-bloodborne-antiguos-cazadores-old-hunters.png?tf=3840x"
-                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 4 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="https://images6.alphacoders.com/655/655990.jpg"
-                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 5 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="https://store-images.s-microsoft.com/image/apps.27049.13695428578279600.6735c8ff-2c94-4961-bb1e-c3e71366bf8d.d60ed1f8-5c6e-410a-80d8-ca77ef2c1563?q=90&w=480&h=270"
-                class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
+        @foreach ($covers as $cover)
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img src="{{ $cover }} " alt="{{ $name }}"
+                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            </div>
+        @endforeach
     </div>
     <!-- Slider indicators -->
     <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
