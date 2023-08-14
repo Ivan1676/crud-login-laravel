@@ -37,7 +37,7 @@ class LoginController extends Controller
 
             Auth::login($user); // Login the user after register
 
-            return redirect()->route('store'); // Redirect to the "store" route after registration
+            return redirect()->route('home'); // Redirect to the "store" route after registration
         } catch (QueryException $e) {
             // Check if the exception is due to a duplicate entry (email already exists)
             if ($e->getCode() === '23000') {

@@ -47,3 +47,6 @@ Route::delete('/delete/{game}', [GameController::class, 'delete'])->name('confir
 
 Route::get('/home', [GameController::class, 'showSlider'])->middleware('auth')->name('home');
 
+
+
+
