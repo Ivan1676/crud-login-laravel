@@ -23,16 +23,6 @@ class LoginController extends Controller
 
             $user->save();
 
-            // Determine if the user should be registered as an admin
-            $isAdmin = false;
-            if ($request->email === 'ivan.mosteo.zrg@gmail.com') {
-                $isAdmin = true;
-            }
-
-            if ($isAdmin) {
-                $user->update(['role' => 'admin']);
-            }
-
             event(new Registered($user)); // Fire the Registered event
 
             Auth::login($user); // Login the user after register

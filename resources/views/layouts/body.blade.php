@@ -14,3 +14,8 @@
 </body>
 </html>
 
+<style>
+    body {
+        max-width: 100%;
+    }
+</style>
