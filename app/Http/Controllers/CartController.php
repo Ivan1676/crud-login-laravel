@@ -24,9 +24,9 @@ class CartController extends Controller
 
     public function showCart()
     {
-        $cartItems = Cart::all();
+        $user = auth()->user();
+        $cartItems = $user->cartItems; // Assuming you named the relationship 'cartItems'
         $games = Game::all();
-        return view('store/store', compact('cartItems', 'games'));
+        return view('store/store', compact('cartItems', 'games', 'user'));
     }
-
 }

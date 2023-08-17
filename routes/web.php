@@ -15,7 +15,8 @@ use App\Http\Controllers\CartController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/cart', [CartController::class, "showCart"])->name('cart-show');
+Route::get('/cart', [CartController::class, "showCart"])->name('cart-show')->middleware('auth');
+
 
 Route::get('/', function () {
     $games = Game::all();
