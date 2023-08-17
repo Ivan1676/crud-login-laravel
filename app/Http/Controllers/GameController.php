@@ -122,13 +122,14 @@ class GameController extends Controller
     }
     public function showSlider()
     {
-        $games = Game::all();
-        $covers = $games->pluck('cover'); // Assuming 'cover' is the field name for cover URLs
-        $name = $games->pluck('name');
+        $topGames = Game::orderBy('units_sold', 'desc')->take(5)->get();
+
+        $covers = $topGames->pluck('cover'); // Assuming 'cover' is the field name for cover URLs
+        $names = $topGames->pluck('name');
 
         return view('home.index', [
             'covers' => $covers,
-            'name' => $name
+            'names' => $names
         ]);
     }
 }

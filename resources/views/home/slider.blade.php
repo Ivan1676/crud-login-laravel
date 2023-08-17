@@ -12,10 +12,10 @@
 <div id="carousel" class="relative w-1/2 h-1/3 mb-32" data-carousel="slide">
     <!-- Carousel wrapper -->
     <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-        @foreach ($covers as $cover)
+        @foreach ($covers as $index => $cover)
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img src="{{ $cover }} " alt="{{ $name }}"
-                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                <img src="{{ $cover }}" alt="{{ $names[$index] }}"
+                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
             </div>
         @endforeach
     </div>

@@ -10,36 +10,21 @@ class CartController extends Controller
 {
     public function addToCart(Request $request)
     {
-        $userId = auth()->user()->id;
-        $gameId = $request->input('game_id');
+        $cartItem = new Cart();
+        $cartItem->user_id = auth()->user()->id;
+        $cartItem->game_id = $request->game_id;
+        $cartItem->cover = $request->cover;
+        $cartItem->name = $request->name;
+        $cartItem->price = $request->price;
 
+        $cartItem->save();
 
-        $existingCartItem = Cart::where('user_id', $userId)
-            ->where('game_id', $gameId)
-            ->first();
-
-        if ($existingCartItem) {
-
-            $existingCartItem->update([
-                'quantity' => $existingCartItem->quantity + 1,
-            ]);
-        } else {
-
-            Cart::create([
-                'user_id' => $userId,
-                'game_id' => $gameId,
-                'quantity' => 1,
-            ]);
-        }
-
-        return response()->json(['message' => 'Item added to cart']);
+        return redirect()->route('store')->with('success', 'Game added to cart.');
     }
 
     public function showCart()
     {
-        $userId = auth()->user()->id;
-        $cartItems = Cart::with('game')->where('user_id', $userId)->get();
-
-        return view('cart.show', compact('cartItems'));
+        $cartItems = Cart::all();
+        return view('your.view.name', compact('cartItems'));
     }
 }
