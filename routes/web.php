@@ -4,7 +4,7 @@ use App\Models\Game;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\GameController;
-use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,6 +46,10 @@ Route::get('/delete/{game}', [GameController::class, 'deleteView'])->name('delet
 Route::delete('/delete/{game}', [GameController::class, 'delete'])->name('confirm-delete-game');
 
 Route::get('/home', [GameController::class, 'showSlider'])->middleware('auth')->name('home');
+
+Route::post('/cart/add', [CartController::class, "addToCart"])->name('cart-add');
+Route::post('/cart', [CartController::class, "showCart"])->name('cart-show');
+
 
 
 

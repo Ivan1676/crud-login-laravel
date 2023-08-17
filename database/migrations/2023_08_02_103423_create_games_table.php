@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('developer');
             $table->decimal('price', 10, 2);
             $table->string('cover');
+            $table->integer('units_sold')->default(0);
             $table->timestamps();
         });
     }

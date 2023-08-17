@@ -80,7 +80,8 @@
                     </div>
                     <!-- Modal -->
                     <div id="gameModal_{{ $game->id }}"
-                        class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50" name="modalGame">
+                        class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50"
+                        name="modalGame">
                         <div class="bg-black text-white p-4 rounded-lg shadow-lg w-96 h-auto">
                             <img src="{{ $game->cover }}" alt="Game Cover" class="w-full h-60 mb-2">
                             <h2 class="text-2xl font-bold mb-2">{{ $game->name }}</h2>
@@ -89,22 +90,23 @@
                             <div class="mb-2">Release date: {{ $game->release_date }}</div>
                             <div class="mb-2">Developer: {{ $game->developer }}</div>
                             <div class="mb-2">Price: {{ $game->price }}€</div>
-                            <button
-                                class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-600 to-red-700 group-hover:from-red-600 group-hover:to-red-700 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800">
-                                <span
-                                    class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                                    Buy Game
-                                </span>
-                            </button>
-                            <button
-                                class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
-                                <span
-                                    class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
-                                    onclick="toggleGameModal('{{ $game->id }}')">
-                                    Close
-                                </span>
-                            </button>
-
+                            <div class="flex justify-center space-x-2 mb-2">
+                                <button
+                                    class="relative w-2/5 inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-600 to-red-700 group-hover:from-red-600 group-hover:to-red-700 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800">
+                                    <span
+                                        class="relative w-full px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                                        Buy Game
+                                    </span>
+                                </button>
+                                <button
+                                    class="relative w-2/5 inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                                    <span
+                                        class="relative w-full px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+                                        onclick="toggleGameModal('{{ $game->id }}')">
+                                        Close
+                                    </span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
