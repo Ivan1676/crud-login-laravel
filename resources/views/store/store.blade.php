@@ -61,7 +61,7 @@
         </div>
     </section>
 @else
-    <<section class="max-w-5xl mx-auto mb-10">
+    <section class="max-w-5xl mx-auto mb-10">
         <h2 class="text-2xl font-semibold mb-4">Your Cart</h2>
         @if ($cartItems->isEmpty())
             <p>Your cart is empty.</p>
