@@ -25,6 +25,8 @@ class CartController extends Controller
     public function showCart()
     {
         $cartItems = Cart::all();
-        return view('your.view.name', compact('cartItems'));
+        $games = Game::all();
+        return view('store/store', compact('cartItems', 'games'));
     }
+
 }
