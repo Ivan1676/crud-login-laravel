@@ -4,10 +4,9 @@
     <title>Sign up</title>
 </head>
 <!--Solo es una prueba-->
-<section class="bg-gray-50 dark:bg-gray-900">
+<section class="bg-black dark:bg-black">
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <div
-            class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+        <div class="w-full rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0" id="divForm">
             <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                 <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                     Sign in to your account
@@ -18,7 +17,7 @@
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                             email</label>
                         <input type="email" name="email" id="email"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
                             placeholder="name@company.com" required autocomplete="disable" />
                         @error('email')
                             <span class="block mt-2 text-red-600">{{ $message }}</span>
@@ -27,22 +26,23 @@
                     <div>
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                             name</label>
-                        <input type="name" name="name" id="name"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="name@company.com" required autocomplete="disable" />
+                        <input type="text" name="name" id="name"
+                            class="bg-gray-50 border sm:text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
+                            placeholder="Your name" required autocomplete="disable" />
                     </div>
                     <div>
-                        <label for="second_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
+                        <label for="second_name"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                             second name</label>
-                        <input type="second_name" name="second_name" id="second_name"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="name@company.com" required autocomplete="disable" />
+                        <input type="text" name="second_name" id="second_name"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
+                            placeholder="Your second name" required autocomplete="disable" />
                     </div>
                     <div>
                         <label for="password"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                         <input type="password" name="password" id="password" placeholder="••••••••"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
                             required />
                     </div>
                     <div class="flex items-center justify-between">
@@ -53,18 +53,18 @@
                                     required="">
                             </div>
                             <div class="ml-3 text-sm">
-                                <label for="remember" class="text-gray-500 dark:text-gray-300">Remember me</label>
+                                <label for="remember" class="text-white dark:text-white">Remember me</label>
                             </div>
                         </div>
                         <a href="#"
-                            class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot
+                            class="text-sm font-medium text-primary-600 hover:underline dark:text-white">Forgot
                             password?</a>
                     </div>
                     <button type="submit"
-                        class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign
+                        class="w-full text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Sign
                         up
                     </button>
-                    <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+                    <p class="text-sm font-light text-white dark:text-white">
                         Already have an account? <a href="{{ route('login') }}"
                             class="font-medium text-primary-600 hover:underline dark:text-primary-500">Login</a>
                     </p>
@@ -73,3 +73,13 @@
         </div>
     </div>
 </section>
+
+<style>
+    #divForm {
+        background: linear-gradient(130deg, rgb(248, 66, 66) 5%, black 40%, rgb(0, 0, 0) 10%, black 90%);
+    }
+
+    input {
+        background: linear-gradient(310deg, rgb(248, 66, 66) 5%, black 40%, rgb(0, 0, 0) 10%, black 90%);
+    }
+</style>
