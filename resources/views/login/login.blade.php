@@ -6,8 +6,7 @@
 <!--Solo es una prueba-->
 <section class="bg-black dark:bg-black">
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <div
-            class="w-full rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0" id="divForm">
+        <div class="w-full rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0" id="divForm">
             <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                 <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                     Sign in to your account
@@ -46,9 +45,10 @@
                             class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot
                             password?</a>
                     </div>
-                    <button type="submit"
-                    class="w-full text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Log in
-                </button>
+                    <button type="submit" id="button"
+                        class="w-full text-white hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Log
+                        in
+                    </button>
 
                     <p class="text-sm font-light text-white">
                         Don’t have an account yet? <a href="{{ route('register') }}"
@@ -63,6 +63,10 @@
 <style>
     #divForm {
         background: linear-gradient(130deg, rgb(248, 66, 66) 5%, black 40%, rgb(0, 0, 0) 10%, black 90%);
+    }
+
+    #button {
+        background: linear-gradient(310deg, rgb(248, 66, 66) 5%, black 40%, rgb(0, 0, 0) 10%, black 90%);
     }
 
     input {
