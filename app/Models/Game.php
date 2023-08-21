@@ -29,4 +29,9 @@ class Game extends Model
     {
         return $this->belongsToMany(Publisher::class, 'publisher_game', 'game_id', 'publisher_id');
     }
+
+    public function trophies()
+    {
+        return $this->hasMany(Trophie::class, 'game_id');
+    }
 }
