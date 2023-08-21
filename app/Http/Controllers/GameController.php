@@ -39,16 +39,17 @@ class GameController extends Controller
             'description' => 'required|min:3',
             'genre' => 'required|min:3',
             'release_date' => 'required|date',
-            'developer' => 'required|min:3',
             'price' => 'required|numeric',
             'cover' => 'required|url',
             'developer' => 'required|exists:developers,id',
+            'publisher' => 'required|exists:publishers,id',
         ]);
 
         $data['cover'] = $request->cover;
 
         $game = Game::create($data);
         $game->developers()->attach($data['developer']);
+        $game->publishers()->attach($data['publisher_id']);
 
         return redirect()->route('store'); // Redirect to the "store" page after adding the game
     }
@@ -92,15 +93,17 @@ class GameController extends Controller
             'description' => 'required|min:3',
             'genre' => 'required|min:3',
             'release_date' => 'required|date',
-            'developer' => 'required|exists:developers,id', // Validate that the developer exists
             'price' => 'required|numeric',
             'cover' => 'required|url',
+            'developer' => 'required|exists:developers,id',
+            'publisher' => 'required|exists:publishers,id',
         ]);
 
         $game->update($data);
 
         // Sync the developer relationship to the one specified in the request
         $game->developers()->sync([$data['developer']]);
+        $game->publishers()->sync([$data['publisher_id']]);
 
         return redirect()->route('store');
     }
