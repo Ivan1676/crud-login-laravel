@@ -15,8 +15,13 @@ class Publisher extends Model
         'phone'
     ];
 
-    public function publisher()
+    public function games()
     {
-        return $this->belongsToMany(Publisher::class, 'publisher_game', 'game_id', 'publisher_id');
+        return $this->belongsToMany(Game::class, 'publisher_game', 'publisher_id', 'game_id');
+    }
+
+    public function developers()
+    {
+        return $this->belongsToMany(Developer::class, 'developer_publisher', 'publisher_id', 'developer_id');
     }
 }

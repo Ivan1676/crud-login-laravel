@@ -19,4 +19,9 @@ class Developer extends Model
     {
         return $this->belongsToMany(Game::class, 'developer_game', 'developer_id', 'game_id');
     }
+
+    public function publishers()
+    {
+        return $this->belongsToMany(Publisher::class, 'developer_publisher', 'developer_id', 'publisher_id');
+    }
 }
