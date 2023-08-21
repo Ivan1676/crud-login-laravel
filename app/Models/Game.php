@@ -19,4 +19,9 @@ class Game extends Model
         'cover',
         'units_sold'
     ];
+
+    public function developers()
+    {
+        return $this->belongsToMany(Developer::class, 'developer_game', 'game_id', 'developer_id');
+    }
 }
