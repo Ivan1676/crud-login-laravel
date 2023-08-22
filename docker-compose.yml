@@ -1,19 +1,42 @@
-version: '3'
-services:
-  app:
-    image: laravel:latest  # Replace with your Laravel image
-    volumes:
-      - ./laravel:/var/www/html
-    ports:
-      - "8000:8000"
-    environment:
-      APP_NAME: Laravel
-      APP_ENV: local
-      APP_KEY: base64:RiJM1kilcnLjqL9fXGuxRDHNm9I+lclFFfyyLpoG+6Y=
-      # Add other Laravel environment variables as needed
+version: '3.7'
 
-  mailhog:
-    image: mailhog/mailhog
+services:
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: store
+      MYSQL_USER: ivan
+      MYSQL_PASSWORD: esgs*FMNI80sgvnD8
     ports:
-      - "8025:8025"  # MailHog Web UI
-      - "1025:1025"  # MailHog SMTP Server
+      - "33306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  myapp:
+    image: docker.io/bitnami/laravel:latest
+    ports:
+      - '8000:8000'
+    environment:
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_DATABASE=store
+      - DB_USERNAME=ivan
+      - DB_PASSWORD=esgs*FMNI80sgvnD8
+    volumes:
+      - './app:/app'
+    depends_on:
+      - mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8800:80
+    depends_on:
+      - mysql
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mysql
+
+volumes:
+  mysql_data:
