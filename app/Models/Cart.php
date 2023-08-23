@@ -13,6 +13,7 @@ class Cart extends Model
         'user_id',
         'game_id',
         'quantity',
+        'bill'
     ];
 
     public function user()
@@ -20,8 +21,8 @@ class Cart extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function game()
+    public function games()
     {
-        return $this->belongsTo(Game::class);
+        return $this->hasMany(Game::class); 
     }
 }

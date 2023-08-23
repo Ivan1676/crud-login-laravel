@@ -34,4 +34,10 @@ class Game extends Model
     {
         return $this->hasMany(Trophie::class, 'game_id');
     }
+
+    public function cart()
+    {
+        return $this->belongsTo(Cart::class); 
+    }
+
 }
