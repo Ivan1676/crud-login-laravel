@@ -2,9 +2,12 @@
 
 use App\Models\Game;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\CartController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,6 +42,14 @@ Route::post('/start-session', [LoginController::class, 'login'])->name('start-se
 Route::post('/validate-register', [LoginController::class, 'register'])->name('validate-register');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
+// Forgot Password Routes
+Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password-request');
+Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password-email');
+
+// Reset Password Routes
+Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password-reset');
+Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password-update');
+
 Route::get('/store', [GameController::class, 'index'])->middleware('auth')->name('store');
 Route::get('/create', [GameController::class, 'create'])->name('create-game');
 Route::post('/store', [GameController::class, 'store'])->name('store-game');
@@ -50,10 +61,4 @@ Route::delete('/delete/{game}', [GameController::class, 'delete'])->name('confir
 Route::get('/home', [GameController::class, 'showSlider'])->middleware('auth')->name('home');
 
 Route::post('/cart/add', [CartController::class, "addToCart"])->name('cart-add');
-
-
-
-
-
-
 
