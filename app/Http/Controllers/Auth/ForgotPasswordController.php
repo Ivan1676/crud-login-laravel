@@ -9,3 +9,5 @@ class ForgotPasswordController extends Controller
 {
     use SendsPasswordResetEmails;
 }
+
+// https://stackoverflow.com/questions/44788861/laravel-trait-illuminate-foundation-auth-authenticatesandregistersusers-not-f
