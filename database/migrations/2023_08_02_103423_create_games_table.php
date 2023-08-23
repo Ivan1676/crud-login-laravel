@@ -17,7 +17,6 @@ return new class extends Migration
             $table->text('description');
             $table->string('genre');
             $table->date('release_date');
-            $table->string('developer');
             $table->decimal('price', 10, 2);
             $table->string('cover');
             $table->integer('units_sold')->default(0);
