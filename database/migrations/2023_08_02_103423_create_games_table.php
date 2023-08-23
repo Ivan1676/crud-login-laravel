@@ -21,9 +21,6 @@ return new class extends Migration
             $table->string('cover');
             $table->integer('units_sold')->default(0);
             $table->timestamps();
-
-            $table->foreign('developer_id')->references('id')->on('developers')->onDelete('cascade');
-            $table->foreign('publisher_id')->references('id')->on('publishers')->onDelete('cascade');
         });
     }
 

@@ -16,6 +16,9 @@ return new class extends Migration
             $table->unsignedBigInteger('publisher_id');
             $table->unsignedBigInteger('game_id');
             $table->timestamps();
+
+            $table->foreign('publisher_id')->references('id')->on('publishers');
+            $table->foreign('game_id')->references('id')->on('games');
         });
     }
 

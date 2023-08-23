@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('trophies', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('description');
+            $table->unsignedBigInteger('game_id');
             $table->timestamps();
+
+            $table->foreign('game_id')->references('id')->on('games');
         });
     }
 

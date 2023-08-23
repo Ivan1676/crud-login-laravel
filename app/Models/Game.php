@@ -31,7 +31,7 @@ class Game extends Model
 
     public function trophies()
     {
-        return $this->hasMany(Trophie::class, 'game_id');
+        return $this->hasMany(Trophie::class, 'game_id'); 
     }
 
     public function cart()
