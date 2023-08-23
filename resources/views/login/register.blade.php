@@ -3,7 +3,7 @@
 <head>
     <title>Sign up</title>
 </head>
-<!--Solo es una prueba-->
+
 <section class="bg-black dark:bg-black">
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <div class="w-full rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0" id="divForm">
@@ -56,7 +56,7 @@
                                 <label for="remember" class="text-white dark:text-white">Remember me</label>
                             </div>
                         </div>
-                        <a href="#"
+                        <a href="{{ route('forgot-password') }}"
                             class="text-sm font-medium text-primary-600 hover:underline dark:text-white">Forgot
                             password?</a>
                     </div>

@@ -42,6 +42,8 @@ Route::post('/start-session', [LoginController::class, 'login'])->name('start-se
 Route::post('/validate-register', [LoginController::class, 'register'])->name('validate-register');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
+
+Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('forgot-password');
 // Forgot Password Routes
 Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password-request');
 Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password-email');
