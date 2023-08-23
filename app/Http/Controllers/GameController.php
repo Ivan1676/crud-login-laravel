@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Game;
+use App\Models\Developer;
+use App\Models\Publisher;
+use App\Models\Trophie;
 use Illuminate\Http\Request;
 
 class GameController extends Controller
@@ -26,32 +29,34 @@ class GameController extends Controller
      */
     public function create()
     {
-        return view('store/create-game');
-    }
+        $developers = Developer::all();
+        $publishers = Publisher::all();
+        $trophies = Trophie::all();
 
+        return view('store/create-game', [
+            'developers' => $developers,
+            'publishers' => $publishers,
+            'trophies' => $trophies,
+        ]);
+    }
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name' => 'required|min:3',
-            'description' => 'required|min:3',
-            'genre' => 'required|min:3',
-            'release_date' => 'required|date',
-            'price' => 'required|numeric',
-            'cover' => 'required|url',
-            'developer' => 'required|exists:developers,id',
-            'publisher' => 'required|exists:publishers,id',
+            // ... your other validation rules ...
+            'developers' => 'required|array',
+            'publishers' => 'required|array',
+            'trophies' => 'required|array',
         ]);
 
-        $data['cover'] = $request->cover;
-
         $game = Game::create($data);
-        $game->developers()->attach($data['developer']);
-        $game->publishers()->attach($data['publisher_id']);
+        $game->developers()->sync($data['developers']);
+        $game->publishers()->sync($data['publishers']);
+        $game->trophies()->sync($data['trophies']);
 
-        return redirect()->route('store'); // Redirect to the "store" page after adding the game
+        return redirect()->route('store');
     }
 
     /**
