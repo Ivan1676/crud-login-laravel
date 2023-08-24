@@ -21,7 +21,7 @@
                         {{ $errors->first('email') }}
                     </div>
                 @endif
-                <form class="space-y-4 md:space-y-6" method="POST" action="{{ route('password-email') }}">
+                <form class="space-y-4 md:space-y-6" method="POST" action="{{ route('password.email') }}">
                     @csrf
                     <div>
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Enter
