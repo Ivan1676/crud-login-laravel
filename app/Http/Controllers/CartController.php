@@ -36,11 +36,13 @@ class CartController extends Controller
         return redirect()->route('store')->with('success', 'Game added to cart.');
     }
 
-    public function showCart()
+    public function showStoreWithCart()
     {
         $user = auth()->user();
-        $cartItems = $user->cartItems; 
+        $cartItems = $user->cartItems; // Assuming you have defined a relationship in your User model
         $games = Game::all();
+
         return view('store/store', compact('cartItems', 'games', 'user'));
     }
+
 }

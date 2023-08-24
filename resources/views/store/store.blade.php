@@ -90,21 +90,27 @@
 @else
     <section class="max-w-5xl mx-auto mb-10">
         <h2 class="text-2xl font-semibold mb-4">Your Cart</h2>
-        @if ($cartItems->isEmpty())
-            <p>Your cart is empty.</p>
+        @if ($cartItems === null || $cartItems->isEmpty())
+            <section class="max-w-5xl mx-auto mb-10">
+                <h2 class="text-2xl font-semibold mb-4">Your Cart</h2>
+                <p>Your cart is empty.</p>
+            </section>
         @else
-            @foreach ($cartItems as $cartItem)
-                <div class="flex items-center border-b border-gray-300 py-4">
-                    <img src="{{ $cartItem->game->cover }}" alt="Game Cover" class="w-16 h-16 mr-4">
-                    <div class="flex-grow">
-                        <h3 class="text-lg font-medium">{{ $cartItem->game->name }}</h3>
-                        <p class="text-gray-500">Price: {{ $cartItem->game->price }}€</p>
-                        <p class="text-gray-500">Quantity: {{ $cartItem->quantity }}</p>
+            <section class="max-w-5xl mx-auto mb-10">
+                <h2 class="text-2xl font-semibold mb-4">Your Cart</h2>
+                @foreach ($cartItems as $cartItem)
+                    <div class="flex items-center border-b border-gray-300 py-4">
+                        <img src="{{ $cartItem->game->cover }}" alt="Game Cover" class="w-16 h-16 mr-4">
+                        <div class="flex-grow">
+                            <h3 class="text-lg font-medium">{{ $cartItem->game->name }}</h3>
+                            <p class="text-gray-500">Price: {{ $cartItem->game->price }}€</p>
+                            <p class="text-gray-500">Quantity: {{ $cartItem->quantity }}</p>
+                        </div>
+                        <button class="text-red-600 hover:text-red-700"
+                            onclick="removeFromCart({{ $cartItem->id }})">Remove</button>
                     </div>
-                    <button class="text-red-600 hover:text-red-700"
-                        onclick="removeFromCart({{ $cartItem->id }})">Remove</button>
-                </div>
-            @endforeach
+                @endforeach
+            </section>
         @endif
     </section>
 

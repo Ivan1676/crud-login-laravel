@@ -18,8 +18,6 @@ use App\Http\Controllers\CartController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/cart', [CartController::class, "showCart"])->name('cart-show')->middleware('auth');
-
 
 Route::get('/', function () {
     $games = Game::all();
@@ -30,6 +28,18 @@ Route::get('/', function () {
         return view('login/login');
     }
 });
+
+Route::get('/store', function () {
+    if (auth()->check()) {
+        $cart = session()->get('cart');
+        $cartItems = $cart->getItems(); // Make sure this method exists in your Cart class
+        $games = Game::all();
+        return view('store/store', ['games' => $games, 'cartItems' => $cartItems]);
+    } else {
+        return view('store/login');
+    }
+})->middleware('auth')->name('store');
+
 
 Route::view('/login', 'login/login')->name('login');
 Route::view('/register', 'login/register')->name('register');
@@ -53,7 +63,7 @@ Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEm
 Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
 
-Route::get('/store', [GameController::class, 'index'])->middleware('auth')->name('store');
+Route::get('/store', [CartController::class, 'showStoreWithCart'])->middleware('auth')->name('store');
 Route::get('/create', [GameController::class, 'create'])->name('create-game');
 Route::post('/store', [GameController::class, 'store'])->name('store-game');
 Route::get('/edit/{game}', [GameController::class, 'editView'])->name('edit-game');
@@ -64,4 +74,4 @@ Route::delete('/delete/{game}', [GameController::class, 'delete'])->name('confir
 Route::get('/home', [GameController::class, 'showSliderAndGames'])->middleware('auth')->name('home');
 
 Route::post('/cart/add', [CartController::class, "addToCart"])->name('cart-add');
-
+Route::get('/cart', [CartController::class, "showCart"])->name('cart-show')->middleware('auth');
