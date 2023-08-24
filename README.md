@@ -1,5 +1,6 @@
 ## Steps just in case not working (provisional)
 -Composer install
+- Not sure yet but maybe install composer ui in another device
 <br />
 
 ## Generate an autoload.php on vendor
