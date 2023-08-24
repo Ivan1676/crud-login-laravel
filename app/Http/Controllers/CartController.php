@@ -39,7 +39,7 @@ class CartController extends Controller
     public function showStoreWithCart()
     {
         $user = auth()->user();
-        $cartItems = $user->cartItems; // Assuming you have defined a relationship in your User model
+        $cartItems = $user->cartItems; 
         $games = Game::all();
 
         return view('store/store', compact('cartItems', 'games', 'user'));
