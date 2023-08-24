@@ -23,8 +23,9 @@ Route::get('/cart', [CartController::class, "showCart"])->name('cart-show')->mid
 
 Route::get('/', function () {
     $games = Game::all();
+    $newestGames = Game::orderBy('created_at', 'desc')->take(3)->get();
     if (auth()->check()) {
-        return redirect()->route('home', ['games' => $games]);
+        return redirect()->route('home', ['games' => $games, 'newestGames' => $newestGames]);
     } else {
         return view('login/login');
     }
@@ -60,7 +61,7 @@ Route::put('/edit/{game}', [GameController::class, 'update'])->name('confirm-edi
 Route::get('/delete/{game}', [GameController::class, 'deleteView'])->name('delete-game');
 Route::delete('/delete/{game}', [GameController::class, 'delete'])->name('confirm-delete-game');
 
-Route::get('/home', [GameController::class, 'showSlider'])->middleware('auth')->name('home');
+Route::get('/home', [GameController::class, 'showSliderAndGames'])->middleware('auth')->name('home');
 
 Route::post('/cart/add', [CartController::class, "addToCart"])->name('cart-add');
 

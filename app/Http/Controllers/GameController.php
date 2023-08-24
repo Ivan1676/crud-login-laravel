@@ -134,16 +134,18 @@ class GameController extends Controller
         $game->delete();
         return redirect()->route('store');
     }
-    public function showSlider()
+    public function showSliderAndGames()
     {
         $topGames = Game::orderBy('units_sold', 'desc')->take(5)->get();
+        $newestGames = Game::orderBy('release_date', 'desc')->take(3)->get();
 
         $covers = $topGames->pluck('cover'); // Assuming 'cover' is the field name for cover URLs
         $names = $topGames->pluck('name');
 
         return view('home.index', [
             'covers' => $covers,
-            'names' => $names
+            'names' => $names,
+            'newestGames' => $newestGames
         ]);
     }
 }
