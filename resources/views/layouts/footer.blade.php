@@ -34,10 +34,11 @@
                     <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
                     <ul class="text-gray-500 dark:text-gray-400 font-medium">
                         <li class="mb-4">
-                            <a href="#" class="hover:underline">Privacy Policy</a>
+                            <button class="tab-button" id="privacyTab" onclick="openPrivacyPolicyModal()">Privacy
+                                Policy</button>
                         </li>
                         <li>
-                            <a href="#" class="hover:underline">Terms &amp; Conditions</a>
+                            <button class="tab-button" id="termsTab" onclick="openTermsModal()">Terms of use</button>
                         </li>
                     </ul>
                 </div>
@@ -98,6 +99,93 @@
     </div>
 </footer>
 
+<!-- Privacy Policy Modal -->
+<div id="privacyPolicyModal" class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
+    <div class="bg-black text-white p-4 rounded-lg shadow-lg w-2/3 h-auto">
+        <h2 class="text-2xl font-bold mb-2">Privacy Policy</h2>
+        <div class="legal-content">
+            At Game X, we value your privacy and are committed to protecting your personal information.
+            This Privacy Policy outlines how we collect, use, and safeguard the information you provide to us.
+
+            <h3 class="text-lg font-semibold mt-4">Information Collection</h3>
+            When you use our services or make purchases on our platform, we may collect personal information such as
+            your name, email address, billing and shipping address, and payment details. This information is used to
+            process your orders and provide you with a seamless shopping experience.
+
+            <h3 class="text-lg font-semibold mt-4">Information Usage</h3>
+            We use the collected information to fulfill your orders, provide customer support, improve our services, and
+            send you relevant updates and offers. We do not share your personal information with third parties for
+            marketing purposes without your consent.
+
+            <h3 class="text-lg font-semibold mt-4">Data Security</h3>
+            We implement security measures to protect your personal information from unauthorized access, disclosure,
+            alteration, or destruction. We use encrypted connections for sensitive data transmission and regularly
+            update our security practices.
+
+            <h3 class="text-lg font-semibold mt-4">Cookies</h3>
+            Our website uses cookies to enhance your browsing experience. Cookies are small text files stored on your
+            device that help us remember your preferences and provide personalized content.
+
+            <h3 class="text-lg font-semibold mt-4">Your Choices</h3>
+            You can update or delete your personal information by accessing your account settings. You can also
+            unsubscribe from our marketing communications at any time.
+
+            For a detailed overview of our data handling practices, please review our full Privacy Policy.
+
+        </div>
+        <button
+            class="relative w-1/3 inline-flex items-center justify-center p-0.5 mt-2 overflow-hidden text-sm font-medium text-white rounded-lg group bg-gradient-to-br from-red-600 to-red-700 group-hover:from-red-600 group-hover:to-red-700 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800"
+            onclick="closePrivacyPolicyModal()">
+            <span
+                class="relative w-full px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                Close
+            </span>
+        </button>
+    </div>
+</div>
+
+
+<!-- Terms of use -->
+<div id="termsModal" class="fixed hidden inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
+    <div class="bg-black text-white p-4 rounded-lg shadow-lg w-2/3 h-auto">
+        <h2 class="text-2xl font-bold mb-2">Terms & Conditions</h2>
+        <div class="legal-content">
+            Welcome to Game X! These terms and conditions outline the rules and regulations for the use of our platform.
+
+            <h3 class="text-lg font-semibold mt-4">Acceptance of Terms</h3>
+            By accessing and using our services, you agree to abide by these terms and conditions. If you disagree with
+            any part of these terms, please do not use our platform.
+
+            <h3 class="text-lg font-semibold mt-4">User Responsibilities</h3>
+            When using our services, you agree not to engage in any unlawful activities, violate others' rights, or
+            transmit harmful content. You are responsible for maintaining the security of your account.
+
+            <h3 class="text-lg font-semibold mt-4">Intellectual Property</h3>
+            The content on our platform, including but not limited to text, images, graphics, and logos, is protected by
+            intellectual property laws. You may not reproduce or distribute our content without permission.
+
+            <h3 class="text-lg font-semibold mt-4">Limitation of Liability</h3>
+            We strive to provide accurate and reliable information, but we do not guarantee the accuracy or completeness
+            of the content. We are not liable for any damages arising from the use of our platform.
+
+            <h3 class="text-lg font-semibold mt-4">Governing Law</h3>
+            These terms and conditions are governed by and construed in accordance with the laws of [Your Jurisdiction].
+            Any disputes shall be resolved in the courts of [Your Jurisdiction].
+
+            For the complete terms and conditions, please review our full Terms of Use.
+
+        </div>
+        <button
+            class="relative w-1/3 inline-flex items-center justify-center p-0.5 mt-2 overflow-hidden text-sm font-medium text-white rounded-lg group bg-gradient-to-br from-red-600 to-red-700 group-hover:from-red-600 group-hover:to-red-700 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800"
+            onclick="closeTermsModal()">
+            <span
+                class="relative w-full px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                Close
+            </span>
+        </button>
+    </div>
+</div>
+
 <style>
     html {
         position: relative;
@@ -117,4 +205,29 @@
         bottom: 0;
         height: 274px;
     }
+
+    #legalModal {
+        background: linear-gradient(130deg, rgb(248, 66, 66) 5%, black 30%, rgb(0, 0, 0) 10%, black 90%);
+    }
 </style>
+
+<script>
+    const privacyPolicyModal = document.getElementById('privacyPolicyModal');
+    const termsModal = document.getElementById('termsModal');
+
+    function openPrivacyPolicyModal() {
+        privacyPolicyModal.classList.remove('hidden');
+    }
+
+    function closePrivacyPolicyModal() {
+        privacyPolicyModal.classList.add('hidden');
+    }
+
+    function openTermsModal() {
+        termsModal.classList.remove('hidden');
+    }
+
+    function closeTermsModal() {
+        termsModal.classList.add('hidden');
+    }
+</script>
