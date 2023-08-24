@@ -27,7 +27,7 @@
     </div>
 </section>
 
-<section class="bg-gray-100 dark:bg-gray-800 py-10 my-32" id="section2">
+<section class="w-2/3 mx-auto bg-gray-100 dark:bg-gray-800 py-10 my-32" id="section2">
     <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-6">Newest Additions</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
