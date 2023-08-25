@@ -31,12 +31,12 @@ class Game extends Model
 
     public function trophies()
     {
-        return $this->hasMany(Trophie::class, 'game_id'); 
+        return $this->hasMany(Trophy::class, 'game_id');
     }
 
     public function cart()
     {
-        return $this->belongsTo(Cart::class); 
+        return $this->belongsTo(Cart::class);
     }
 
 }

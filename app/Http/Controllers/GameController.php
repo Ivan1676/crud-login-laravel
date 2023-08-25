@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Game;
 use App\Models\Developer;
 use App\Models\Publisher;
-use App\Models\Trophie;
+use App\Models\Trophy;
 use Illuminate\Http\Request;
 
 class GameController extends Controller
@@ -31,7 +31,7 @@ class GameController extends Controller
     {
         $developers = Developer::all();
         $publishers = Publisher::all();
-        $trophies = Trophie::all();
+        $trophies = Trophy::all();
 
         return view('store/create-game', [
             'developers' => $developers,
@@ -45,7 +45,12 @@ class GameController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            // ... your other validation rules ...
+            'name' => 'required|min:3',
+            'description' => 'required|min:3',
+            'genre' => 'required|min:3',
+            'release_date' => 'required|date',
+            'price' => 'required|numeric',
+            'cover' => 'required|url',
             'developers' => 'required|array',
             'publishers' => 'required|array',
             'trophies' => 'required|array',
@@ -54,7 +59,13 @@ class GameController extends Controller
         $game = Game::create($data);
         $game->developers()->sync($data['developers']);
         $game->publishers()->sync($data['publishers']);
-        $game->trophies()->sync($data['trophies']);
+        foreach ($data['trophies'] as $trophyId) {
+            $trophy = Trophy::find($trophyId);
+
+            // Associate the trophy with the game
+            $trophy->game()->associate($game);
+            $trophy->save();
+        }
 
         return redirect()->route('store');
     }
