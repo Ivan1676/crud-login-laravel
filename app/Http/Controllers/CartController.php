@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Game;
+use App\Models\Developer;
+use App\Models\Publisher;
+use App\Models\Trophy;
 
 class CartController extends Controller
 {
@@ -39,10 +42,13 @@ class CartController extends Controller
     public function showStoreWithCart()
     {
         $user = auth()->user();
-        $cartItems = $user->cartItems; 
+        $cartItems = $user->cartItems;
         $games = Game::all();
+        $developers = Developer::all();
+        $publishers = Publisher::all();
+        $trophies = Trophy::all();
 
-        return view('store/store', compact('cartItems', 'games', 'user'));
+        return view('store/store', compact('cartItems', 'games', 'user', 'developers', 'publishers', 'trophies'));
     }
 
 }

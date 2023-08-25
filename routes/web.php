@@ -33,20 +33,21 @@ Route::get('/', function () {
     }
 });
 
+// User
 Route::get('/store', function () {
+    $games = Game::all();
+    $cart = session()->get('cart');
+    $cartItems = $cart->getItems();
+
     if (auth()->check()) {
-        $games = Game::all();
-        $developers = Developer::all();
-        $publishers = Publisher::all();
-        $trophies = Trophy::all();
-        $cart = session()->get('cart');
-        $cartItems = $cart->getItems();
-        return view('store/store', ['games' => $games, 'cartItems' => $cartItems, 'developers' => $developers, 'publishers' => $publishers, 'trophies' => $trophies]);
+        return view('store/store', [
+            'games' => $games,
+            'cartItems' => $cartItems,
+        ]);
     } else {
         return view('store/login');
     }
-})->middleware('auth')->name('store');
-
+})->middleware('auth')->name('store/store');
 
 // Create game
 Route::get('/create-game', function () {
@@ -55,7 +56,6 @@ Route::get('/create-game', function () {
     $trophies = Trophy::all();
     return view('store/create', ['developers' => $developers, 'publishers' => $publishers, 'trophies' => $trophies]);
 })->middleware('auth')->name('store/login');
-
 
 Route::view('/login', 'login/login')->name('login');
 Route::view('/register', 'login/register')->name('register');
