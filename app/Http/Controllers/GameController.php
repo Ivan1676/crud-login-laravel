@@ -56,13 +56,12 @@ class GameController extends Controller
             'trophies' => 'required|array',
         ]);
 
-        $game = Game::create($data);
+        $game = Game::create($data);;
         $game->developers()->sync($data['developers']);
         $game->publishers()->sync($data['publishers']);
+        $game->trophies()->sync($data['trophies']);
         foreach ($data['trophies'] as $trophyId) {
             $trophy = Trophy::find($trophyId);
-
-            // Associate the trophy with the game
             $trophy->game()->associate($game);
             $trophy->save();
         }

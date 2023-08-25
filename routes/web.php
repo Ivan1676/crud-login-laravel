@@ -1,12 +1,16 @@
 <?php
 
 use App\Models\Game;
+use App\Models\Developer;
+use App\Models\Publisher;
+use App\Models\Trophy;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\CartController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,14 +35,26 @@ Route::get('/', function () {
 
 Route::get('/store', function () {
     if (auth()->check()) {
-        $cart = session()->get('cart');
-        $cartItems = $cart->getItems(); // Make sure this method exists in your Cart class
         $games = Game::all();
-        return view('store/store', ['games' => $games, 'cartItems' => $cartItems]);
+        $developers = Developer::all();
+        $publishers = Publisher::all();
+        $trophies = Trophy::all();
+        $cart = session()->get('cart');
+        $cartItems = $cart->getItems();
+        return view('store/store', ['games' => $games, 'cartItems' => $cartItems, 'developers' => $developers, 'publishers' => $publishers, 'trophies' => $trophies]);
     } else {
         return view('store/login');
     }
 })->middleware('auth')->name('store');
+
+
+// Create game
+Route::get('/create-game', function () {
+    $developers = Developer::all();
+    $publishers = Publisher::all();
+    $trophies = Trophy::all();
+    return view('store/create', ['developers' => $developers, 'publishers' => $publishers, 'trophies' => $trophies]);
+})->middleware('auth')->name('store/login');
 
 
 Route::view('/login', 'login/login')->name('login');

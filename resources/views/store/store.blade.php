@@ -64,7 +64,6 @@
                                 @endforeach
                             </select>
                         </div>
-
                         <div class="mb-5">Price: {{ $game->price }}€</div>
                         <div class="flex">
                             <a href="{{ route('edit-game', ['game' => $game->id]) }}"
