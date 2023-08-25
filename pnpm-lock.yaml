@@ -1,22 +1,28 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@popperjs/core': ^2.11.6
   autoprefixer: ^10.4.14
   axios: ^1.1.2
+  bootstrap: ^5.2.3
   flowbite: ^1.8.1
   laravel-vite-plugin: ^0.7.5
   postcss: ^8.4.27
+  sass: ^1.56.1
   tailwindcss: ^3.3.3
   vite: ^4.0.0
 
 devDependencies:
+  '@popperjs/core': 2.11.8
   autoprefixer: 10.4.14_postcss@8.4.27
   axios: 1.4.0
+  bootstrap: 5.3.1_@popperjs+core@2.11.8
   flowbite: 1.8.1
   laravel-vite-plugin: 0.7.8_vite@4.4.8
   postcss: 8.4.27
+  sass: 1.66.1
   tailwindcss: 3.3.3
-  vite: 4.4.8
+  vite: 4.4.8_sass@1.66.1
 
 packages:
 
@@ -337,6 +343,14 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /bootstrap/5.3.1_@popperjs+core@2.11.8:
+    resolution: {integrity: sha512-jzwza3Yagduci2x0rr9MeFSORjcHpt0lRZukZPZQJT1Dth5qzV7XcgGqYzi39KGAVYR8QEDVoO0ubFKOxzMG+g==}
+    peerDependencies:
+      '@popperjs/core': ^2.11.8
+    dependencies:
+      '@popperjs/core': 2.11.8
+    dev: true
+
   /brace-expansion/1.1.11:
     resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}
     dependencies:
@@ -562,6 +576,10 @@ packages:
       function-bind: 1.1.1
     dev: true
 
+  /immutable/4.3.4:
+    resolution: {integrity: sha512-fsXeu4J4i6WNWSikpI88v/PcVflZz+6kMhUfIwc5SY+poQRPnaf5V7qds6SUyUN3cVxEzuCab7QIoLOQ+DQ1wA==}
+    dev: true
+
   /inflight/1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
     dependencies:
@@ -615,7 +633,7 @@ packages:
       vite: ^3.0.0 || ^4.0.0
     dependencies:
       picocolors: 1.0.0
-      vite: 4.4.8
+      vite: 4.4.8_sass@1.66.1
       vite-plugin-full-reload: 1.0.5_vite@4.4.8
     dev: true
 
@@ -855,6 +873,16 @@ packages:
       queue-microtask: 1.2.3
     dev: true
 
+  /sass/1.66.1:
+    resolution: {integrity: sha512-50c+zTsZOJVgFfTgwwEzkjA3/QACgdNsKueWPyAR0mRINIvLAStVQBbPg14iuqEQ74NPDbXzJARJ/O4SI1zftA==}
+    engines: {node: '>=14.0.0'}
+    hasBin: true
+    dependencies:
+      chokidar: 3.5.3
+      immutable: 4.3.4
+      source-map-js: 1.0.2
+    dev: true
+
   /source-map-js/1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
@@ -956,10 +984,10 @@ packages:
     dependencies:
       picocolors: 1.0.0
       picomatch: 2.3.1
-      vite: 4.4.8
+      vite: 4.4.8_sass@1.66.1
     dev: true
 
-  /vite/4.4.8:
+  /vite/4.4.8_sass@1.66.1:
     resolution: {integrity: sha512-LONawOUUjxQridNWGQlNizfKH89qPigK36XhMI7COMGztz8KNY0JHim7/xDd71CZwGT4HtSRgI7Hy+RlhG0Gvg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -990,6 +1018,7 @@ packages:
       esbuild: 0.18.17
       postcss: 8.4.27
       rollup: 3.27.0
+      sass: 1.66.1
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
