@@ -24,7 +24,7 @@ services:
       - DB_USERNAME=ivan
       - DB_PASSWORD=esgs*FMNI80sgvnD8
     volumes:
-      - './app:/app'
+      - '.:/app'
     depends_on:
       - mysql
 
