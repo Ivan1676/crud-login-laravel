@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('publisher_game', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('publisher_id');
-            $table->unsignedBigInteger('game_id');
+            $table->unsignedBigInteger('publisher_id')->nullable();
+            $table->unsignedBigInteger('game_id')->nullable();
             $table->timestamps();
 
             $table->foreign('publisher_id')->references('id')->on('publishers');
