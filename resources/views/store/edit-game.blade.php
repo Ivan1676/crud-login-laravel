@@ -69,7 +69,7 @@
                 <select name="trophies[]" id="trophies" class="w-full p-2 border-2 border-red-500 text-black" multiple>
                     @foreach ($trophies as $trophy)
                         <option value="{{ $trophy->id }}"
-                            {{ $game->trophies->contains('id', $trophy->id) ? 'selected' : '' }}>
+                            {{ in_array($trophy->id, $game->trophies->pluck('id')->toArray()) ? 'selected' : '' }}>
                             {{ $trophy->name }}
                         </option>
                     @endforeach
