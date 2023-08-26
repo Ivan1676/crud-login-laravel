@@ -52,14 +52,13 @@
         <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-6">Newest Additions</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             @foreach ($newestGames as $game)
+                <!-- Iterating through $newestGames -->
                 <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden">
                     <img class="w-full h-48 object-cover" src="{{ $game->cover }}" alt="{{ $game->name }}">
                     <div class="p-4">
                         <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{{ $game->name }}</h3>
                         <p class="text-gray-500 dark:text-gray-300">{{ $game->description }}</p>
-                        <a href="{{ route('game.show', $game->id) }}"
-                            class="mt-2 inline-block bg-red-500 hover:bg-red-600 text-white text-sm font-semibold rounded px-3 py-1">View
-                            Details</a>
+                        <a href="{{ route('home') }}" class="mt-2 inline-block bg-red-500 hover:bg-red-600 text-white text-sm font-semibold rounded px-3 py-1">View Details</a>
                     </div>
                 </div>
             @endforeach
@@ -127,5 +126,4 @@
     #section5 {
         background: linear-gradient(130deg, rgb(248, 66, 66) 5%, black 40%, rgb(0, 0, 0) 10%, black 90%);
     }
-
 </style>
