@@ -85,8 +85,15 @@ class GameController extends Controller
      */
     public function edit(Game $game)
     {
+        $developers = Developer::all();
+        $publishers = Publisher::all();
+        $trophies = Trophy::all();
+
         return view('store/edit-game', [
-            'game' => $game
+            'game' => $game,
+            'developers' => $developers,
+            'publishers' => $publishers,
+            'trophies' => $trophies,
         ]);
     }
 
@@ -95,8 +102,15 @@ class GameController extends Controller
      */
     public function editView(Game $game)
     {
+        $developers = Developer::all();
+        $publishers = Publisher::all();
+        $trophies = Trophy::all();
+
         return view('store/edit-game', [
-            'game' => $game
+            'game' => $game,
+            'developers' => $developers,
+            'publishers' => $publishers,
+            'trophies' => $trophies
         ]);
     }
 
@@ -109,18 +123,26 @@ class GameController extends Controller
             'release_date' => 'required|date',
             'price' => 'required|numeric',
             'cover' => 'required|url',
-            'developer' => 'required|exists:developers,id',
-            'publisher' => 'required|exists:publishers,id',
+            'developers' => 'required|array',
+            'publishers' => 'required|array',
+            'trophies' => 'required|array',
         ]);
+
 
         $game->update($data);
 
-        // Sync the developer relationship to the one specified in the request
-        $game->developers()->sync([$data['developer']]);
-        $game->publishers()->sync([$data['publisher_id']]);
+
+        $game->developers()->sync($request->input('developers'));
+        $game->publishers()->sync($request->input('publishers'));
+
+
+        $trophyIds = $request->input('trophies');
+        $game->trophies()->update(['game_id' => null]);
+        Trophy::whereIn('id', $trophyIds)->update(['game_id' => $game->id]);
 
         return redirect()->route('store');
     }
+
 
     /**
      * Remove the specified resource from storage.
