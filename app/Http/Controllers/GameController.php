@@ -59,7 +59,6 @@ class GameController extends Controller
         $game = Game::create($data);;
         $game->developers()->sync($data['developers']);
         $game->publishers()->sync($data['publishers']);
-        $game->trophies()->sync($data['trophies']);
         foreach ($data['trophies'] as $trophyId) {
             $trophy = Trophy::find($trophyId);
             $trophy->game()->associate($game);

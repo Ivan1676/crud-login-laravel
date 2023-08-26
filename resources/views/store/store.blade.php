@@ -37,32 +37,26 @@
                         <div>Description: {{ $game->description }}</div>
                         <div>Genre: {{ $game->genre }}</div>
                         <div>Release date: {{ $game->release_date }}</div>
-                        <div class="mb-4">
-                            <label for="developers">Developers:</label>
-                            <select name="developers[]" id="developers" multiple
-                                class="w-full p-2 border-2 border-red-500 text-black">
-                                @foreach ($developers as $developer)
-                                    <option value="{{ $developer->id }}">{{ $developer->name }}</option>
+                        <div>Developer:
+                            <ul>
+                                @foreach ($game->developers as $developer)
+                                    <li class="ml-10">{{ $developer->name }}</li>
                                 @endforeach
-                            </select>
+                            </ul>
                         </div>
-                        <div class="mb-4">
-                            <label for="publishers">Publishers:</label>
-                            <select name="publishers[]" id="publishers" multiple
-                                class="w-full p-2 border-2 border-red-500 text-black">
-                                @foreach ($publishers as $publisher)
-                                    <option value="{{ $publisher->id }}">{{ $publisher->name }}</option>
+                        <div>Publisher:
+                            <ul>
+                                @foreach ($game->publishers as $publisher)
+                                    <li class="ml-10">{{ $publisher->name }}</li>
                                 @endforeach
-                            </select>
+                            </ul>
                         </div>
-                        <div class="mb-4">
-                            <label for="trophies">Trophies:</label>
-                            <select name="trophies[]" id="trophies" multiple
-                                class="w-full p-2 border-2 border-red-500 text-black">
-                                @foreach ($trophies as $trophy)
-                                    <option value="{{ $trophy->id }}">{{ $trophy->name }}</option>
+                        <div>Trophies:
+                            <ul>
+                                @foreach ($game->trophies as $trophy)
+                                    <li class="ml-10">{{ $trophy->name }}</li>
                                 @endforeach
-                            </select>
+                            </ul>
                         </div>
                         <div class="mb-5">Price: {{ $game->price }}€</div>
                         <div class="flex">
