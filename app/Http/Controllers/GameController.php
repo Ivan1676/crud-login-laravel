@@ -56,7 +56,7 @@ class GameController extends Controller
             'trophies' => 'required|array',
         ]);
 
-        $game = Game::create($data);;
+        $game = Game::create($data);
         $game->developers()->sync($data['developers']);
         $game->publishers()->sync($data['publishers']);
         foreach ($data['trophies'] as $trophyId) {
@@ -127,7 +127,15 @@ class GameController extends Controller
      */
     public function destroy(Game $game)
     {
+        $game->developers()->detach();
+        $game->publishers()->detach();
+        $game->trophies->each(function ($trophy) {
+            $trophy->game_id = null;
+            $trophy->save();
+        });
+
         $game->delete();
+
         return redirect()->route('store');
     }
 
@@ -140,6 +148,13 @@ class GameController extends Controller
 
     public function delete(Game $game)
     {
+        $game->developers()->detach();
+        $game->publishers()->detach();
+        $game->trophies->each(function ($trophy) {
+            $trophy->game_id = null;
+            $trophy->save();
+        });
+
         $game->delete();
         return redirect()->route('store');
     }
