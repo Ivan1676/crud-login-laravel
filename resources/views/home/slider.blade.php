@@ -8,7 +8,7 @@
     </span>
 </div>
 
-<div id="carousel" class="relative w-2/3 mb-32" data-carousel="slide">
+<div id="carousel" class="relative w-2/3 mb-32 duration-1000" data-carousel="slide">
     <div class="relative h-auto overflow-hidden rounded-lg md:h-96">
     <!-- Carousel wrapper -->
     <div class="relative h-96 md:h-96">

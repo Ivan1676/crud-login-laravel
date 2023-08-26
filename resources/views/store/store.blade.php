@@ -82,37 +82,21 @@
     </section>
 @else
     <section class="max-w-5xl mx-auto mb-10">
-        <h2 class="text-2xl font-semibold mb-4">Your Cart</h2>
-        @if ($cartItems === null || $cartItems->isEmpty())
-            <section class="max-w-5xl mx-auto mb-10">
-                <h2 class="text-2xl font-semibold mb-4">Your Cart</h2>
-                <p>Your cart is empty.</p>
-            </section>
-        @else
-            <section class="max-w-5xl mx-auto mb-10">
-                <h2 class="text-2xl font-semibold mb-4">Your Cart</h2>
-                @foreach ($cartItems as $cartItem)
-                    <div class="flex items-center border-b border-gray-300 py-4">
-                        <img src="{{ $cartItem->game->cover }}" alt="Game Cover" class="w-16 h-16 mr-4">
-                        <div class="flex-grow">
-                            <h3 class="text-lg font-medium">{{ $cartItem->game->name }}</h3>
-                            <p class="text-gray-500">Price: {{ $cartItem->game->price }}€</p>
-                            <p class="text-gray-500">Quantity: {{ $cartItem->quantity }}</p>
-                        </div>
-                        <button class="text-red-600 hover:text-red-700"
-                            onclick="removeFromCart({{ $cartItem->id }})">Remove</button>
-                    </div>
-                @endforeach
-            </section>
-        @endif
-    </section>
-
-    <section class="max-w-5xl mx-auto mb-10">
         <div>
             <h1
-                class="mb-4 text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-700 md:text-5xl lg:text-6xl">
+                class="mb-16 text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-700 md:text-5xl lg:text-6xl">
                 List Of Games Here!
             </h1>
+        </div> <!-- {  route('cart') }} add later -->
+        <div class="flex items-center justify-between mb-8">
+            <a href=""
+                class="relative inline-flex items-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-500 to-red-700 group-hover:from-red-500 group-hover:to-red-700 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-red-200 dark:focus:ring-red-800">
+                <span
+                    class="relative flex items-center px-2 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                    <x-vaadin-cart class="w-8 h-8 mr-2" />
+                    <span class="mr-5">Go to Cart</span>
+                </span>
+            </a>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left border-b-2 border-red-700 z-40">
             @foreach ($games as $game)
@@ -131,7 +115,27 @@
                             <div class="mb-2">Description: {{ $game->description }}</div>
                             <div class="mb-2">Genre: {{ $game->genre }}</div>
                             <div class="mb-2">Release date: {{ $game->release_date }}</div>
-                            <div class="mb-2">Developer: {{ $game->developer }}</div>
+                            <div class="mb-2">Developer:
+                                <ul>
+                                    @foreach ($game->developers as $developer)
+                                        <li class="ml-10">{{ $developer->name }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <div class="mb-2">Publisher:
+                                <ul>
+                                    @foreach ($game->publishers as $publisher)
+                                        <li class="ml-10">{{ $publisher->name }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <div class="mb-2">Trophies:
+                                <ul>
+                                    @foreach ($game->trophies as $trophy)
+                                        <li class="ml-10">{{ $trophy->name }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
                             <div class="mb-2">Price: {{ $game->price }}€</div>
                             <div class="flex justify-center space-x-2 mb-2">
                                 <form action="{{ route('cart-add') }}" method="GET">
@@ -141,17 +145,17 @@
                                     <input type="hidden" name="cover" value="{{ $game->cover }}">
                                     <input type="hidden" name="price" value="{{ $game->price }}">
                                     <button type="submit"
-                                        class="relative w-2/5 inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-600 to-red-700 group-hover:from-red-600 group-hover:to-red-700 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800">
+                                        class="relative w-full h-auto inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-600 to-red-700 group-hover:from-red-600 group-hover:to-red-700 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800">
                                         <span
-                                            class="relative w-full px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                                            class="relative w-full h-full px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                                             Buy Game
                                         </span>
                                     </button>
                                 </form>
                                 <button
-                                    class="relative w-2/5 inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                                    class="relative w-1/3 h-full inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
                                     <span
-                                        class="relative w-full px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+                                        class="relative w-full h-full px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
                                         onclick="toggleGameModal('{{ $game->id }}')">
                                         Close
                                     </span>

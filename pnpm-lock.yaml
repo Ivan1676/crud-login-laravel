@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@heroicons/react': ^2.0.18
   '@popperjs/core': ^2.11.6
   autoprefixer: ^10.4.14
   axios: ^1.1.2
@@ -11,6 +12,9 @@ specifiers:
   sass: ^1.56.1
   tailwindcss: ^3.3.3
   vite: ^4.0.0
+
+dependencies:
+  '@heroicons/react': 2.0.18
 
 devDependencies:
   '@popperjs/core': 2.11.8
@@ -228,6 +232,12 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@heroicons/react/2.0.18:
+    resolution: {integrity: sha512-7TyMjRrZZMBPa+/5Y8lN0iyvUU/01PeMGX2+RE7cQWpEUIcb4QotzUObFkJDejj/HUH4qjP/eQ0gzzKs2f+6Yw==}
+    peerDependencies:
+      react: '>= 16'
+    dev: false
 
   /@jridgewell/gen-mapping/0.3.3:
     resolution: {integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==}
