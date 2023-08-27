@@ -7,13 +7,14 @@ use App\Models\Cart;
 use App\Models\Game;
 use App\Models\Developer;
 use App\Models\Publisher;
-use App\Models\Trophy;
+use App\Models\Trophy;    use Illuminate\Support\Facades\Auth;
+
 
 class CartController extends Controller
 {
     public function addToCart(Request $request)
     {
-        $userId = auth()->user()->id;
+        $userId = Auth::id();
         $gameId = $request->game_id;
 
         $existingCartItem = Cart::where('user_id', $userId)
@@ -21,17 +22,19 @@ class CartController extends Controller
             ->first();
 
         if ($existingCartItem) {
-            // Game already exists, increase the quantity Gotta do some changes later
+            // Game already exists in the cart, increase the quantity
             $existingCartItem->quantity += 1;
             $existingCartItem->save();
         } else {
-
-            $cartItem = new Cart();
-            $cartItem->user_id = auth()->user()->id;
-            $cartItem->game_id = $request->game_id;
-            $cartItem->cover = $request->cover;
-            $cartItem->name = $request->name;
-            $cartItem->price = $request->price;
+            // Create a new cart item
+            $cartItem = new Cart([
+                'user_id' => $userId,
+                'game_id' => $gameId,
+                'quantity' => 1,
+                'cover' => $request->cover,
+                'name' => $request->name,
+                'price' => $request->price,
+            ]);
 
             $cartItem->save();
         }
@@ -50,5 +53,4 @@ class CartController extends Controller
 
         return view('store/store', compact('cartItems', 'games', 'user', 'developers', 'publishers', 'trophies'));
     }
-
 }

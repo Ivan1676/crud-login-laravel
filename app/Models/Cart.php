@@ -13,7 +13,6 @@ class Cart extends Model
         'user_id',
         'game_id',
         'quantity',
-        'bill'
     ];
 
     public function user()
@@ -23,6 +22,6 @@ class Cart extends Model
 
     public function games()
     {
-        return $this->hasMany(Game::class); 
+        return $this->hasMany(Game::class);
     }
 }

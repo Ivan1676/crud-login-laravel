@@ -138,7 +138,7 @@
                             </div>
                             <div class="mb-2">Price: {{ $game->price }}€</div>
                             <div class="flex justify-center space-x-2 mb-2">
-                                <form action="{{ route('cart-add') }}" method="GET">
+                                <form action="{{ route('cart-add') }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="game_id" value="{{ $game->id }}">
                                     <input type="hidden" name="name" value="{{ $game->name }}">
