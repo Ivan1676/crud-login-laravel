@@ -1,4 +1,3 @@
-//resources/views/checkout.blade.php
 <!DOCTYPE html>
 <html lang="en">
 

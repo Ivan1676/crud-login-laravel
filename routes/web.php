@@ -34,7 +34,6 @@ Route::get('/', function () {
     }
 });
 
-// User
 Route::get('/store', function () {
     $games = Game::all();
     $cart = session()->get('cart');
@@ -65,14 +64,12 @@ Route::view('/store', 'store/store')->middleware('auth')->name('store');
 Route::view('/gallery', 'gallery/gallery')->middleware('auth')->name('gallery');
 Route::view('/contact', 'contact/contact')->middleware('auth')->name('contact');
 
-
 Route::post('/start-session', [LoginController::class, 'login'])->name('start-session');
 Route::post('/validate-register', [LoginController::class, 'register'])->name('validate-register');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-
-Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('forgot-password');
 // Forgot Password Routes
+Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('forgot-password');
 Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
 Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 
@@ -90,7 +87,13 @@ Route::delete('/delete/{game}', [GameController::class, 'delete'])->name('confir
 
 Route::get('/home', [GameController::class, 'showSliderAndGames'])->middleware('auth')->name('home');
 
+//Cart
 Route::post('/cart/add', [CartController::class, "addToCart"])->name('cart-add');
 Route::get('/cart', [CartController::class, "showCart"])->name('cart-show')->middleware('auth');
-Route::get('checkout', [StripeController::class, 'checkout'])->name('checkout');
 Route::view('checkout-view', 'stripe/checkout')->name('checkout-view');
+
+//Stripe
+Route::get('checkout', [StripeController::class, 'checkout'])->name('checkout');
+Route::get('session', [StripeController::class, 'session'])->name('session');
+Route::get('success', [StripeController::class, 'success'])->name('success');
+
