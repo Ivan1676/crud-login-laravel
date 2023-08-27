@@ -8,7 +8,7 @@ class StripeController extends Controller
 {
     public function checkout()
     {
-        return view('checkout');
+        return view('stripe/checkout');
     }
 
     public function session(Request $request)

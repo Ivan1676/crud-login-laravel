@@ -93,3 +93,4 @@ Route::get('/home', [GameController::class, 'showSliderAndGames'])->middleware('
 Route::post('/cart/add', [CartController::class, "addToCart"])->name('cart-add');
 Route::get('/cart', [CartController::class, "showCart"])->name('cart-show')->middleware('auth');
 Route::get('checkout', [StripeController::class, 'checkout'])->name('checkout');
+Route::view('checkout-view', 'stripe/checkout')->name('checkout-view');

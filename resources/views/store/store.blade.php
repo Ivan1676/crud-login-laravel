@@ -87,9 +87,9 @@
                 class="mb-16 text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-700 md:text-5xl lg:text-6xl">
                 List Of Games Here!
             </h1>
-        </div> <!-- {  route('cart') }} add later -->
+        </div>
         <div class="flex items-center justify-between mb-8">
-            <a href=""
+            <a href="{{ route('checkout-view') }}"
                 class="relative inline-flex items-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-500 to-red-700 group-hover:from-red-500 group-hover:to-red-700 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-red-200 dark:focus:ring-red-800">
                 <span
                     class="relative flex items-center px-2 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
