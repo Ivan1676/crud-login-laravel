@@ -5,7 +5,6 @@
 <head>
     <title>Store</title>
 </head>
-
 @if (auth()->check())
 @if (auth()->user()->role === 'admin')
     <section>

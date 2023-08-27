@@ -56,16 +56,18 @@ class GameController extends Controller
             'trophies' => 'required|array',
         ]);
 
-        $game = Game::create($data);
-        $game->developers()->sync($data['developers']);
-        $game->publishers()->sync($data['publishers']);
+        $games = Game::create($data);
+        $games->developers()->sync($data['developers']);
+        $games->publishers()->sync($data['publishers']);
         foreach ($data['trophies'] as $trophyId) {
             $trophy = Trophy::find($trophyId);
-            $trophy->game()->associate($game);
+            $trophy->game()->associate($games);
             $trophy->save();
         }
 
-        return redirect()->route('store');
+        return view('store/store', [
+            'games' => $games
+        ]);
     }
 
     /**

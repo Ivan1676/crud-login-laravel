@@ -41,6 +41,7 @@ Route::get('/store', function () {
     $cartItems = $cart->getItems();
 
     if (auth()->check()) {
+        dd("Authenticated!");
         return view('store/store', [
             'games' => $games,
             'cartItems' => $cartItems,
@@ -92,7 +93,7 @@ Route::get('/home', [GameController::class, 'showSliderAndGames'])->middleware('
 Route::view('checkout-view', 'stripe/checkout')->name('checkout-view');
 Route::post('/cart/add', [CartController::class, "addToCart"])->name('cart-add');
 Route::get('/checkout', [CartController::class, 'showStoreWithCart'])->middleware('auth')->name('cart-store');
-Route::get('/checkout', [CartController::class, 'showCheckoutView'])->middleware('auth')->name('cart');
+Route::get('/checkout', [CartController::class, 'showCheckoutView'])->middleware('auth')->name('checkout');
 
 //Stripe
 Route::get('checkout', [StripeController::class, 'checkout'])->name('checkout');
