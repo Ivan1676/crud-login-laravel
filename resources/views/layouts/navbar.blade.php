@@ -24,7 +24,7 @@
                         {{ request()->routeIs('home') ? 'sm:text-red-700 md:dark:text-red-700 lg:text-red-700 xl:text-red-700 dark:text-red-500 bg-red-700 sm:bg-black md:bg-black lg:bg-black xl:bg-black dark:bg-red-500' : '' }}">Home</a>
                 </li>
                 <li>
-                    <a href="{{ route('store') }}"
+                    <a href="{{ route('store-view') }}"
                         class="block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0 dark:text-white md:dark:text-white md:dark:hover:text-red-500 dark:hover:bg-red-700 dark:hover:text-white md:dark:hover:bg-transparent
                         {{ request()->routeIs('store') ? 'sm:text-red-700 md:dark:text-red-700 lg:text-red-700 xl:text-red-700 dark:text-red-500 bg-red-700 sm:bg-black md:bg-black lg:bg-black xl:bg-black dark:bg-red-500' : '' }}">Store</a>
                 </li>

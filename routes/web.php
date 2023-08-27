@@ -34,6 +34,7 @@ Route::get('/', function () {
     }
 });
 
+// User
 Route::get('/store', function () {
     $games = Game::all();
     $cart = session()->get('cart');
@@ -60,9 +61,10 @@ Route::get('/create-game', function () {
 Route::view('/login', 'login/login')->name('login');
 Route::view('/register', 'login/register')->name('register');
 Route::view('/home', 'home/index')->middleware('auth')->name('home');
-Route::view('/store', 'store/store')->middleware('auth')->name('store');
+Route::view('/store', 'store/store')->middleware('auth')->name('store-view');
 Route::view('/gallery', 'gallery/gallery')->middleware('auth')->name('gallery');
 Route::view('/contact', 'contact/contact')->middleware('auth')->name('contact');
+
 
 Route::post('/start-session', [LoginController::class, 'login'])->name('start-session');
 Route::post('/validate-register', [LoginController::class, 'register'])->name('validate-register');
@@ -77,7 +79,6 @@ Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEm
 Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
 
-Route::get('/store', [CartController::class, 'showStoreWithCart'])->middleware('auth')->name('store');
 Route::get('/create', [GameController::class, 'create'])->name('create-game');
 Route::post('/store', [GameController::class, 'store'])->name('store-game');
 Route::get('/edit/{game}', [GameController::class, 'editView'])->name('edit-game'); //ESTAS 2
@@ -88,9 +89,10 @@ Route::delete('/delete/{game}', [GameController::class, 'delete'])->name('confir
 Route::get('/home', [GameController::class, 'showSliderAndGames'])->middleware('auth')->name('home');
 
 //Cart
-Route::post('/cart/add', [CartController::class, "addToCart"])->name('cart-add');
-Route::get('/cart', [CartController::class, "showCart"])->name('cart-show')->middleware('auth');
 Route::view('checkout-view', 'stripe/checkout')->name('checkout-view');
+Route::post('/cart/add', [CartController::class, "addToCart"])->name('cart-add');
+Route::get('/checkout', [CartController::class, 'showStoreWithCart'])->middleware('auth')->name('cart-store');
+Route::get('/checkout', [CartController::class, 'showCheckoutView'])->middleware('auth')->name('cart');
 
 //Stripe
 Route::get('checkout', [StripeController::class, 'checkout'])->name('checkout');

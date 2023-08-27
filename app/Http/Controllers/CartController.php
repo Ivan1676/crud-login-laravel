@@ -7,7 +7,8 @@ use App\Models\Cart;
 use App\Models\Game;
 use App\Models\Developer;
 use App\Models\Publisher;
-use App\Models\Trophy;    use Illuminate\Support\Facades\Auth;
+use App\Models\Trophy;
+use Illuminate\Support\Facades\Auth;
 
 
 class CartController extends Controller
@@ -42,15 +43,62 @@ class CartController extends Controller
         return redirect()->route('store')->with('success', 'Game added to cart.');
     }
 
-    public function showCart()
+    public function showStoreWithCart()
     {
         $user = auth()->user();
         $cartItems = $user->cartItems;
-        $games = Game::all();
-        $developers = Developer::all();
-        $publishers = Publisher::all();
-        $trophies = Trophy::all();
 
-        return view('store/store', compact('cartItems', 'games', 'user', 'developers', 'publishers', 'trophies'));
+        $cartItemDetails = [];
+
+        // Check if $cartItems is not null before iterating
+        if (!is_null($cartItems)) {
+            foreach ($cartItems as $cartItem) {
+                $game = $cartItem->game;
+
+                $gameDetails = [
+                    'cover' => $game->cover,
+                    'name' => $game->name,
+                    'genre' => $game->genre,
+                    'release_date' => $game->release_date,
+                    'price' => $game->price,
+                    'quantity' => $cartItem->quantity,
+                ];
+
+                $cartItemDetails[] = $gameDetails;
+            }
+        }
+
+        return view('stripe/checkout', compact('cartItemDetails'));
+    }
+
+    public function showCheckoutView()
+    {
+        $user = auth()->user();
+        $cartItems = $user->cartItems;
+
+        $cartItemDetails = [];
+
+        // Check if $cartItems is not null before iterating
+        if (!is_null($cartItems)) {
+            foreach ($cartItems as $cartItem) {
+                $game = $cartItem->game;
+
+                $gameDetails = [
+                    'cover' => $game->cover,
+                    'name' => $game->name,
+                    'genre' => $game->genre,
+                    'release_date' => $game->release_date,
+                    'price' => $game->price,
+                    'quantity' => $cartItem->quantity,
+                ];
+
+                $cartItemDetails[] = $gameDetails;
+            }
+        }
+
+        // Pass data including the cart item details to the view
+        return view('stripe/checkout', [
+            'cartItemDetails' => $cartItemDetails,
+        ]);
     }
 }

@@ -6,7 +6,8 @@
     <title>Store</title>
 </head>
 
-@if ($user->role === 'admin')
+@if (auth()->check())
+@if (auth()->user()->role === 'admin')
     <section>
         <div class="max-w-5xl mx-auto flex items-center justify-between">
             <div>
@@ -167,7 +168,7 @@
             @endforeach
         </div>
     </section>
-
+@endif
     <script>
         function toggleGameModal(gameId) {
             const modal = document.getElementById('gameModal_' + gameId);

@@ -12,11 +12,11 @@
 <body>
     <div class="container">
         <div class='row'>
-            <h1>Ya vere</h1>
+            <h1>Checkout</h1>
             <div class='col-md-12'>
                 <div class="card">
                     <div class="card-header">
-                        Laravel 10 How To Integrate Stripe Payment Gateway
+                        Checkout
                     </div>
                     <div class="card-body">
                         <table id="cart" class="table table-hover table-condensed">
@@ -30,43 +30,49 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td data-th="Product">
-                                        <div class="row">
-                                            <div class="col-sm-3 hidden-xs"><img src="{{ asset('img') }}/1.jpg"
-                                                    width="100" height="100" class="img-responsive" /></div>
-                                            <div class="col-sm-9">
-                                                <h4 class="nomargin">Asus Vivobook 17 Laptop - Intel Core 10th</h4>
+                                @foreach ($cartItemDetails as $cartItem)
+                                    <tr>
+                                        <td data-th="Product">
+                                            <div class="row">
+                                                <div class="col-sm-3 hidden-xs">
+                                                    <img src="{{ $cartItem['cover'] }}" width="100" height="100"
+                                                        class="img-responsive" />
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <h4 class="nomargin">{{ $cartItem['name'] }}</h4>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td data-th="Price">$6</td>
-                                    <td data-th="Quantity">
-                                        <input type="number" value="1" class="form-control quantity cart_update"
-                                            min="1" />
-                                    </td>
-                                    <td data-th="Subtotal" class="text-center">$6</td>
-                                    <td class="actions" data-th="">
-                                        <button class="btn btn-danger btn-sm cart_remove"><i class="fa fa-trash-o"></i>
-                                            Delete</button>
-                                    </td>
-                                </tr>
+                                        </td>
+                                        <td data-th="Price">${{ $cartItem['price'] }}</td>
+                                        <td data-th="Quantity">
+                                            <input type="number" value="{{ $cartItem['quantity'] }}"
+                                                class="form-control quantity cart_update" min="1" />
+                                        </td>
+                                        <td data-th="Subtotal" class="text-center">
+                                            ${{ $cartItem['price'] * $cartItem['quantity'] }}
+                                        </td>
+                                        <td class="actions" data-th="">
+                                            <button class="btn btn-danger btn-sm cart_remove"><i
+                                                    class="fa fa-trash-o"></i> Delete</button>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <td colspan="5" style="text-align:right;">
-                                        <h3><strong>Total $6</strong></h3>
+                                        <h3><strong>Total $</strong></h3>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan="5" style="text-align:right;">
+                                        <a href="{{ url('/') }}" class="btn btn-danger">
+                                            <i class="fa fa-arrow-left"></i> Continue Shopping
+                                        </a>
                                         <form action="/session" method="POST">
-                                            <a href="{{ url('/') }}" class="btn btn-danger"> <i
-                                                    class="fa fa-arrow-left"></i> Continue Shopping</a>
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            <input type='hidden' name="total" value="6">
-                                            <input type='hidden' name="productname"
-                                                value="Asus Vivobook 17 Laptop - Intel Core 10th">
+                                            <input type='hidden' name="total" value="">
+                                            <!-- You can add more hidden fields for other data -->
                                             <button class="btn btn-success" type="submit" id="checkout-live-button"><i
                                                     class="fa fa-money"></i> Checkout</button>
                                         </form>
