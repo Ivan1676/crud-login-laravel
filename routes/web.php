@@ -80,9 +80,10 @@ Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEm
 Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
 
+Route::get('/store', [GameController::class, 'index'])->middleware('auth')->name('store-view');
 Route::get('/create', [GameController::class, 'create'])->name('create-game');
 Route::post('/store', [GameController::class, 'store'])->name('store-game');
-Route::get('/edit/{game}', [GameController::class, 'editView'])->name('edit-game'); //ESTAS 2
+Route::get('/edit/{game}', [GameController::class, 'editView'])->name('edit-game');
 Route::put('/edit/{game}', [GameController::class, 'update'])->name('confirm-edit-game');
 Route::get('/delete/{game}', [GameController::class, 'deleteView'])->name('delete-game');
 Route::delete('/delete/{game}', [GameController::class, 'delete'])->name('confirm-delete-game');
