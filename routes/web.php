@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\StripeController;
 
 
 /*
@@ -91,3 +92,4 @@ Route::get('/home', [GameController::class, 'showSliderAndGames'])->middleware('
 
 Route::post('/cart/add', [CartController::class, "addToCart"])->name('cart-add');
 Route::get('/cart', [CartController::class, "showCart"])->name('cart-show')->middleware('auth');
+Route::get('checkout', [StripeController::class, 'checkout'])->name('checkout');
