@@ -42,7 +42,7 @@ class CartController extends Controller
         return redirect()->route('store')->with('success', 'Game added to cart.');
     }
 
-    public function showStoreWithCart()
+    public function showCart()
     {
         $user = auth()->user();
         $cartItems = $user->cartItems;
