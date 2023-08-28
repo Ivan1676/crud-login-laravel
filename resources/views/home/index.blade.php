@@ -4,7 +4,6 @@
 @include('layouts/footer')
 @include('home/slider')
 
-
 <head>
     <title>Home</title>
 </head>

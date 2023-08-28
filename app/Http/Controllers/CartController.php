@@ -40,7 +40,7 @@ class CartController extends Controller
             $cartItem->save();
         }
 
-        return redirect()->route('store')->with('success', 'Game added to cart.');
+        return redirect()->route('store-view')->with('success', 'Game added to cart.');
     }
 
     public function showStoreWithCart()
