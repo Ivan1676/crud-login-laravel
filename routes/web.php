@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Game;
@@ -24,7 +25,7 @@ use App\Http\Controllers\StripeController;
 |
 */
 
-Auth::routes(); 
+Auth::routes();
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -42,7 +43,7 @@ Route::get('/', function () {
     if (auth()->check()) {
         return redirect()->route('home', ['games' => $games, 'newestGames' => $newestGames]);
     } else {
-        return view('login/login');
+        return view('auth/login');
     }
 });
 
