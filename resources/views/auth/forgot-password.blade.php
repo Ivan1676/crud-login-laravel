@@ -30,9 +30,9 @@
                             class="bg-black border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
                             placeholder="name@company.com" required autocomplete="disable" />
                     </div>
-                    <button type="submit" id="button"
-                        class="w-full text-white hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-black dark:hover:bg-red-700 dark:focus:ring-red-800">Send
-                        Password Reset Link</button>
+                    <x-button id="submit">
+                        {{ __('Send email') }}
+                    </x-button>
                 </form>
                 <p class="text-sm font-light text-white">
                     Remember your password? <a href="{{ route('login') }}"

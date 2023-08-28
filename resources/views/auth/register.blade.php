@@ -49,7 +49,7 @@
                         <div class="flex items-start">
                             <div class="flex items-center h-5">
                                 <input id="remember" aria-describedby="remember" type="checkbox"
-                                    class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
+                                    class="w-4 h-4 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                     required="">
                             </div>
                             <div class="ml-3 text-sm">
@@ -60,10 +60,9 @@
                             class="text-sm font-medium text-primary-600 hover:underline dark:text-white">Forgot
                             password?</a>
                     </div>
-                    <button type="submit" id="button"
-                        class="w-full text-white hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-balck dark:hover:bg-red-700 dark:focus:ring-red-800">Sign
-                        up
-                    </button>
+                    <x-button id="submit">
+                        {{ __('Sign Up') }}
+                    </x-button>
                     <p class="text-sm font-light text-white dark:text-white">
                         Already have an account? <a href="{{ route('login') }}"
                             class="font-medium text-primary-600 hover:underline dark:text-primary-500">Login</a>
