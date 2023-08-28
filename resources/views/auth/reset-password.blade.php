@@ -34,19 +34,17 @@
 
                     <!-- Confirm Password -->
                     <div class="mt-4">
-                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm
+                        <label for="email"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm
                             Password</label>
                         <x-text-input id="password_confirmation" class="block mt-1 mb-10 w-full" type="password"
                             name="password_confirmation" required autocomplete="new-password" />
                         <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                     </div>
 
-                    <button type="submit" id="button"
-                        class="w-full text-white hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-black dark:hover:bg-red-700 dark:focus:ring-red-800">
-                        Reset Password
-                    </button>
-                </form>
-
+                    <x-button id="submit">
+                        {{ __('Reset Password') }}
+                    </x-button>
             </div>
         </div>
     </div>
@@ -57,7 +55,9 @@
         background: linear-gradient(130deg, rgb(248, 66, 66) 5%, black 40%, rgb(0, 0, 0) 10%, black 90%);
     }
 
-    #email, #password, #password_confirmation {
+    #email,
+    #password,
+    #password_confirmation {
         background-color: black;
         border: 1px solid #D1D5DB;
         color: #4B5563;
@@ -68,6 +68,7 @@
         display: block;
         width: 100%;
         padding: 0.625rem 1rem;
+
         &:focus {
             border-color: #3B82F6;
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
