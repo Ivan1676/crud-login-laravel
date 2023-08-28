@@ -90,7 +90,7 @@
             </h1>
         </div>
         <div class="flex items-center justify-between mb-8">
-            <a href="{{ route('checkout-view') }}"
+            <a href="{{ route('checkout') }}"
                 class="relative inline-flex items-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-500 to-red-700 group-hover:from-red-500 group-hover:to-red-700 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-red-200 dark:focus:ring-red-800">
                 <span
                     class="relative flex items-center px-2 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">

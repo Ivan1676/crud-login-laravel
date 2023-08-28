@@ -43,34 +43,6 @@ class CartController extends Controller
         return redirect()->route('store-view')->with('success', 'Game added to cart.');
     }
 
-    public function showStoreWithCart()
-    {
-        $user = auth()->user();
-        $cartItems = $user->cartItems;
-
-        $cartItemDetails = [];
-
-        // Check if $cartItems is not null before iterating
-        if (!is_null($cartItems)) {
-            foreach ($cartItems as $cartItem) {
-                $game = $cartItem->game;
-
-                $gameDetails = [
-                    'cover' => $game->cover,
-                    'name' => $game->name,
-                    'genre' => $game->genre,
-                    'release_date' => $game->release_date,
-                    'price' => $game->price,
-                    'quantity' => $cartItem->quantity,
-                ];
-
-                $cartItemDetails[] = $gameDetails;
-            }
-        }
-
-        return view('stripe/checkout', compact('cartItemDetails'));
-    }
-
     public function showCheckoutView()
     {
         $user = auth()->user();
@@ -97,8 +69,6 @@ class CartController extends Controller
         }
 
         // Pass data including the cart item details to the view
-        return view('stripe/checkout', [
-            'cartItemDetails' => $cartItemDetails,
-        ]);
+        return view('stripe/checkout', compact('cartItemDetails'));
     }
 }
