@@ -1,9 +1,10 @@
 @include('layouts/body')
+<x-header >
+</x-header>
 @include('layouts/footer')
 @include('home/slider')
 
-<x-header >
-</x-header>
+
 <head>
     <title>Home</title>
 </head>

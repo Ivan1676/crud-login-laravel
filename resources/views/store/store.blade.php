@@ -1,5 +1,6 @@
 @include('layouts/body')
-@include('layouts/navbar')
+<x-header >
+</x-header>
 @include('layouts/footer')
 
 <head>

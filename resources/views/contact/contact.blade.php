@@ -1,5 +1,6 @@
 @include('layouts/body')
-@include('layouts/navbar')
+<x-header >
+</x-header>
 @include('layouts/footer')
 
 <section class="w-2/3 items-center flex flex-col justify-center px-6 py-8 mb-28 mx-auto md:h-screen lg:py-0">
