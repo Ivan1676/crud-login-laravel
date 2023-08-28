@@ -46,29 +46,28 @@ class CartController extends Controller
     public function showCheckoutView()
     {
         $user = auth()->user();
-        $cartItems = $user->cartItems;
+        $cart = $user->cart; // Retrieve the cart associated with the user
 
-        $cartItemDetails = [];
-
-        // Check if $cartItems is not null before iterating
-        if (!is_null($cartItems)) {
-            foreach ($cartItems as $cartItem) {
-                $game = $cartItem->game;
-
-                $gameDetails = [
-                    'cover' => $game->cover,
-                    'name' => $game->name,
-                    'genre' => $game->genre,
-                    'release_date' => $game->release_date,
-                    'price' => $game->price,
-                    'quantity' => $cartItem->quantity,
-                ];
-
-                $cartItemDetails[] = $gameDetails;
-            }
+        if (!$cart) {
+            return redirect()->route('store-view')->with('error', 'No games in cart.');
         }
 
-        // Pass data including the cart item details to the view
+        $cartItems = $cart->games; // Retrieve games associated with the cart
+        $cartItemDetails = [];
+
+        foreach ($cartItems as $cartItem) {
+            $gameDetails = [
+                'cover' => $cartItem->cover,
+                'name' => $cartItem->name,
+                'genre' => $cartItem->genre,
+                'release_date' => $cartItem->release_date,
+                'price' => $cartItem->price,
+                'quantity' => $cartItem->pivot->quantity, // Access the quantity through the relationship
+            ];
+
+            $cartItemDetails[] = $gameDetails;
+        }
+
         return view('stripe/checkout', compact('cartItemDetails'));
     }
 }

@@ -56,6 +56,7 @@
                                                     class="fa fa-trash-o"></i> Delete</button>
                                         </td>
                                     </tr>
+
                                 @endforeach
                             </tbody>
                             <tfoot>
