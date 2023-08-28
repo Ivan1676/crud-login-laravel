@@ -15,7 +15,7 @@
                     @csrf
                     <div>
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
-                            email</label>
+                            Email</label>
                         <input type="email" name="email" id="email"
                             class="bg-black border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
                             placeholder="name@company.com" required autocomplete="disable" />
@@ -41,9 +41,9 @@
                                 <label for="remember" class="text-gray-500 dark:text-gray-300">Remember me</label>
                             </div>
                         </div>
-                        <a href=""
+                        <a href="{{ route('password.request') }}"
                             class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot
-                            password?</a>
+                            Password?</a>
                     </div>
                     <button type="submit" id="button"
                         class="w-full text-white hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-black dark:hover:bg-red-700 dark:focus:ring-red-800">Log

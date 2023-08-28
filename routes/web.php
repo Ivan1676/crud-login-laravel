@@ -24,6 +24,8 @@ use App\Http\Controllers\StripeController;
 |
 */
 
+Auth::routes(); 
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -69,8 +71,8 @@ Route::get('/create-game', function () {
     return view('store/create', ['developers' => $developers, 'publishers' => $publishers, 'trophies' => $trophies]);
 })->middleware('auth')->name('store/login');
 
-Route::view('/login', 'login/login')->name('login');
-Route::view('/register', 'login/register')->name('register');
+Route::view('/login', 'auth/login')->name('login');
+Route::view('/register', 'auth/register')->name('register');
 Route::view('/home', 'home/index')->middleware('auth')->name('home');
 Route::view('/store', 'store/store')->middleware('auth')->name('store-view');
 Route::view('/gallery', 'gallery/gallery')->middleware('auth')->name('gallery');
@@ -82,7 +84,6 @@ Route::post('/validate-register', [LoginController::class, 'register'])->name('v
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Forgot Password Routes
-Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('forgot-password');
 Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
 Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 

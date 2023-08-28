@@ -15,7 +15,7 @@
                     @csrf
                     <div>
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
-                            email</label>
+                            Email</label>
                         <input type="email" name="email" id="email"
                             class="bg-black border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
                             placeholder="name@company.com" required autocomplete="disable" />
@@ -25,7 +25,7 @@
                     </div>
                     <div>
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
-                            name</label>
+                            Name</label>
                         <input type="text" name="name" id="name"
                             class="bg-black border sm:text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
                             placeholder="Your name" required autocomplete="disable" />
@@ -33,7 +33,7 @@
                     <div>
                         <label for="second_name"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
-                            second name</label>
+                            Second name</label>
                         <input type="text" name="second_name" id="second_name"
                             class="bg-black border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-red-600 focus:border-red-600 block w-full p-2.5 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
                             placeholder="Your second name" required autocomplete="disable" />
@@ -56,7 +56,7 @@
                                 <label for="remember" class="text-white dark:text-white">Remember me</label>
                             </div>
                         </div>
-                        <a href=""
+                        <a href="{{ route('password.request') }}"
                             class="text-sm font-medium text-primary-600 hover:underline dark:text-white">Forgot
                             password?</a>
                     </div>
