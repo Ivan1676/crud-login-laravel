@@ -9,6 +9,7 @@ use App\Models\Developer;
 use App\Models\Publisher;
 use App\Models\Trophy;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class CartController extends Controller
@@ -45,29 +46,14 @@ class CartController extends Controller
 
     public function showCheckoutView()
     {
-        $user = auth()->user();
-        $cart = $user->cart; // Retrieve the cart associated with the user
+        $cartItems = DB::table('carts')
+                ->join('games', 'carts.game_id', '=', 'games.id')
+                ->select('games.cover', 'games.name', 'games.price', 'carts.quantity')
+                ->get();
 
-        if (!$cart) {
-            return redirect()->route('store-view')->with('error', 'No games in cart.');
-        }
-
-        $cartItems = $cart->games; // Retrieve games associated with the cart
-        $cartItemDetails = [];
-
-        foreach ($cartItems as $cartItem) {
-            $gameDetails = [
-                'cover' => $cartItem->cover,
-                'name' => $cartItem->name,
-                'genre' => $cartItem->genre,
-                'release_date' => $cartItem->release_date,
-                'price' => $cartItem->price,
-                'quantity' => $cartItem->pivot->quantity, // Access the quantity through the relationship
-            ];
-
-            $cartItemDetails[] = $gameDetails;
-        }
-
-        return view('stripe/checkout', compact('cartItemDetails'));
+        // Pass data including the cart item details to the view
+        return view('stripe/checkout', [
+            'cartItems' => $cartItems
+        ]);
     }
 }
