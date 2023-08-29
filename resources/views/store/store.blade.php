@@ -31,7 +31,7 @@
                 @foreach ($games as $game)
                     <div class="text-left border-b-2 border-red-700 p-2 mb-5">
                         <div>
-                            <img src="{{ $game->cover }}" alt="Game Cover" class="w-96 h-auto">
+                            <img src="{{ $game->cover }}" alt="Game Cover" class="w-96 h-auto aspect-video">
                         </div>
                         <div>Name: {{ $game->name }}</div>
                         <div>Description: {{ $game->description }}</div>

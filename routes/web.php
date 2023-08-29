@@ -105,8 +105,5 @@ Route::post('/cart/add', [CartController::class, "addToCart"])->name('cart-add')
 Route::get('/checkout', [CartController::class, 'showCheckoutView'])->middleware('auth')->name('checkout');
 
 //Stripe
-//Route::get('checkout', [StripeController::class, 'checkout'])->name('checkout-stripe');
-//Route::get('session', [StripeController::class, 'session'])->name('session');
-//Route::get('success', [StripeController::class, 'success'])->name('success');
 
 require __DIR__.'/auth.php';
