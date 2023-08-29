@@ -6,10 +6,6 @@ use Illuminate\Http\Request;
 
 class StripeController extends Controller
 {
-    public function index() {
-        return view('store/store');
-    }
-
     public function checkout() {
         \Stripe\Stripe::setApiKey(config('stripe.sk'));
 
@@ -27,8 +23,8 @@ class StripeController extends Controller
                 ],
             ],
             'mode' => 'payment',
-            'success_url' => route('success'),
-            'cancel_url' => route('index'),
+            'success_url' => route('success-stripe'),
+            'cancel_url' => route('store-view'),
         ]);
 
         return redirect()->away($session->url);
