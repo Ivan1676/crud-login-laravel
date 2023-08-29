@@ -1,7 +1,6 @@
 @include('layouts/body')
-<x-header >
+<x-header>
 </x-header>
-@include('layouts/footer')
 
 <head>
     <meta charset="UTF-8">
@@ -69,6 +68,8 @@
         </div>
 
     </div>
+    <x-footer>
+    </x-footer>
     <script src="{{ asset('js/gallery/gallery.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>

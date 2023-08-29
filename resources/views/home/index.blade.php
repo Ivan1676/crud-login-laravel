@@ -1,7 +1,6 @@
 @include('layouts/body')
 <x-header >
 </x-header>
-@include('layouts/footer')
 @include('home/slider')
 
 <head>
@@ -115,7 +114,8 @@
         </div>
     </div>
 </section>
-
+<x-footer>
+</x-footer>
 <style>
     #section1 {
         background: linear-gradient(290deg, rgb(248, 66, 66) 5%, black 50%, rgb(0, 0, 0) 10%, black 90%);

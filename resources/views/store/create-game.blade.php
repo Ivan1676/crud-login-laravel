@@ -1,7 +1,6 @@
 @include('layouts/body')
 <x-header >
 </x-header>
-@include('layouts/footer')
 
 <head>
     <title>Create Game</title>
@@ -86,6 +85,8 @@
             </span>
         </a>
     </div>
+    <x-footer>
+    </x-footer>
 @else
     <script>
         window.location.href = '{{ route('store') }}';

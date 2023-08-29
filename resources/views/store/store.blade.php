@@ -1,7 +1,6 @@
 @include('layouts/body')
 <x-header >
 </x-header>
-@include('layouts/footer')
 
 <head>
     <title>Store</title>
@@ -81,6 +80,8 @@
             </div>
         </div>
     </section>
+    <x-footer>
+    </x-footer>
 @else
     <section class="max-w-5xl mx-auto mb-10">
         <div>
@@ -168,6 +169,8 @@
             @endforeach
         </div>
     </section>
+    <x-footer>
+    </x-footer>
 @endif
     <script>
         function toggleGameModal(gameId) {

@@ -1,7 +1,6 @@
 @include('layouts/body')
 <x-header >
 </x-header>
-@include('layouts/footer')
 
 <section class="w-2/3 items-center flex flex-col justify-center px-6 py-8 mb-28 mx-auto md:h-screen lg:py-0">
     <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
@@ -45,7 +44,8 @@
         </form>
     </div>
 </section>
-
+<x-footer>
+</x-footer>
 <style>
     section {
         background: linear-gradient(130deg, rgb(248, 66, 66) 5%, black 30%, rgb(0, 0, 0) 10%, black 90%);
