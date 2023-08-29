@@ -102,10 +102,9 @@ Route::get('/home', [GameController::class, 'showSliderAndGames'])->middleware('
 
 //Cart
 Route::post('/cart/add', [CartController::class, "addToCart"])->name('cart-add');
-Route::get('/checkout', [CartController::class, 'showCheckoutView'])->middleware('auth')->name('checkout');
 
 //Stripe
-Route::get('/checkout/payment', [StripeController::class, "checkout"])->middleware('auth')->name('checkout-stripe');
+Route::get('/checkout', [StripeController::class, "checkout"])->middleware('auth')->name('checkout');
 Route::get('/success', [StripeController::class, "success"])->middleware('auth')->name('success-stripe');
 
 require __DIR__.'/auth.php';

@@ -43,16 +43,4 @@ class CartController extends Controller
 
         return redirect()->route('store-view')->with('success', 'Game added to cart.');
     }
-
-    public function showCheckoutView()
-    {
-        $cartItems = DB::table('carts')
-                ->join('games', 'carts.game_id', '=', 'games.id')
-                ->select('games.cover', 'games.name', 'games.price', 'carts.quantity')
-                ->get();
-
-        return view('stripe/checkout', [
-            'cartItems' => $cartItems
-        ]);
-    }
 }
