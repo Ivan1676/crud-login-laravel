@@ -51,7 +51,6 @@ class CartController extends Controller
                 ->select('games.cover', 'games.name', 'games.price', 'carts.quantity')
                 ->get();
 
-        // Pass data including the cart item details to the view
         return view('stripe/checkout', [
             'cartItems' => $cartItems
         ]);
