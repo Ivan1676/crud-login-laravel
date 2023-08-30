@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\PurchaseConfirmation;
 use Illuminate\Support\Str;
-
+use App\Models\Game;
 
 class StripeController extends Controller
 {
@@ -50,6 +50,7 @@ class StripeController extends Controller
 
         return redirect()->away($session->url);
     }
+
     public function success()
     {
         // Get the authenticated user's email
@@ -58,12 +59,11 @@ class StripeController extends Controller
         // Get the cart items
         $cartItems = DB::table('carts')
             ->join('games', 'carts.game_id', '=', 'games.id')
-            ->select('games.name', 'games.price', 'carts.quantity')
+            ->select('games.id', 'games.name', 'games.price', 'carts.quantity')
             ->where('carts.user_id', auth()->user()->id)
             ->get()
-            ->toArray(); // Convert the collection to an array
+            ->toArray();
 
-        // Generate random keys for each game
         $gameKeys = [];
         foreach ($cartItems as $cartItem) {
             for ($i = 0; $i < $cartItem->quantity; $i++) {
@@ -71,7 +71,11 @@ class StripeController extends Controller
             }
         }
 
-        // Send the email
+        foreach ($cartItems as $cartItem) {
+            $game = Game::find($cartItem->id);
+            $game->increment('units_sold', $cartItem->quantity);
+        }
+
         Mail::to($userEmail)->send(new PurchaseConfirmation($cartItems, $gameKeys));
 
         return view('stripe/success', ['gameKeys' => $gameKeys]);
