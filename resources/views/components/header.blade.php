@@ -2,7 +2,9 @@
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="{{ route('home') }}" class="flex items-center">
             <img src="{{ asset('images/logo.png') }}" alt="logo" class="w-20 h-20">
+            <h1 class="text-5xl text-white ml-5">Game X</h1>
         </a>
+
         <div class="md:hidden">
             <button data-collapse-toggle="navbar-default" type="button"
                 class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
