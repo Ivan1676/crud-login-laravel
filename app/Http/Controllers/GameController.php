@@ -142,7 +142,7 @@ class GameController extends Controller
         $game->trophies()->update(['game_id' => null]);
         Trophy::whereIn('id', $trophyIds)->update(['game_id' => $game->id]);
 
-        return redirect()->route('store');
+        return redirect()->route('store-view');
     }
 
 
@@ -160,7 +160,7 @@ class GameController extends Controller
 
         $game->delete();
 
-        return redirect()->route('store');
+        return redirect()->route('store-view');
     }
 
     public function deleteView(Game $game)
@@ -180,7 +180,7 @@ class GameController extends Controller
         });
 
         $game->delete();
-        return redirect()->route('store');
+        return redirect()->route('store-view');
     }
     public function showSliderAndGames()
     {

@@ -27,16 +27,6 @@ use App\Http\Controllers\StripeController;
 
 Auth::routes();
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
 Route::get('/', function () {
     $games = Game::all();
     $newestGames = Game::orderBy('created_at', 'desc')->take(3)->get();
@@ -63,14 +53,6 @@ Route::get('/store', function () {
         return view('store/login');
     }
 })->middleware('auth')->name('store/store');
-
-// Create game
-Route::get('/create-game', function () {
-    $developers = Developer::all();
-    $publishers = Publisher::all();
-    $trophies = Trophy::all();
-    return view('store/create', ['developers' => $developers, 'publishers' => $publishers, 'trophies' => $trophies]);
-})->middleware('auth')->name('store/login');
 
 Route::view('/login', 'auth/login')->name('login');
 Route::view('/register', 'auth/register')->name('register');

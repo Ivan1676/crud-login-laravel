@@ -100,6 +100,6 @@
     </x-footer>
 @else
     <script>
-        window.location.href = '{{ route('store') }}';
+        window.location.href = '{{ route('store-view') }}';
     </script>
 @endif
