@@ -43,8 +43,6 @@ class StripeController extends Controller
         return redirect()->away($session->url);
     }
 
-
-
     public function success()
     {
         return view('stripe/success');

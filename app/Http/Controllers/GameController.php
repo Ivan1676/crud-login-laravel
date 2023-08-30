@@ -65,9 +65,7 @@ class GameController extends Controller
             $trophy->save();
         }
 
-        return view('store/store', [
-            'games' => $games
-        ]);
+        return redirect()->route('store-view');
     }
 
     /**
