@@ -14,10 +14,12 @@ class PurchaseConfirmation extends Mailable
     use Queueable, SerializesModels;
 
     public $cartItems;
+    public $gameKeys;
 
-    public function __construct($cartItems)
+    public function __construct($cartItems, $gameKeys)
     {
         $this->cartItems = $cartItems;
+        $this->gameKeys = $gameKeys;
     }
 
     public function build()

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\PurchaseConfirmation;
+use Illuminate\Support\Str;
+
 
 class StripeController extends Controller
 {
@@ -58,11 +60,20 @@ class StripeController extends Controller
             ->join('games', 'carts.game_id', '=', 'games.id')
             ->select('games.name', 'games.price', 'carts.quantity')
             ->where('carts.user_id', auth()->user()->id)
-            ->get();
+            ->get()
+            ->toArray(); // Convert the collection to an array
+
+        // Generate random keys for each game
+        $gameKeys = [];
+        foreach ($cartItems as $cartItem) {
+            for ($i = 0; $i < $cartItem->quantity; $i++) {
+                $gameKeys[] = Str::random(24);
+            }
+        }
 
         // Send the email
-        Mail::to($userEmail)->send(new PurchaseConfirmation($cartItems));
+        Mail::to($userEmail)->send(new PurchaseConfirmation($cartItems, $gameKeys));
 
-        return view('stripe/success');
+        return view('stripe/success', ['gameKeys' => $gameKeys]);
     }
 }
