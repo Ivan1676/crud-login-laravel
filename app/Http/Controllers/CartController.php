@@ -41,6 +41,8 @@ class CartController extends Controller
             $cartItem->save();
         }
 
+        session()->flash('game_added_to_cart', true);
+
         return redirect()->route('store-view')->with('success', 'Game added to cart.');
     }
 }

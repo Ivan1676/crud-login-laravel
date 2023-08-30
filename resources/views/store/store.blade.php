@@ -84,19 +84,41 @@
         </x-footer>
     @else
         @if (session('empty_cart'))
-            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative alert" role="alert">
                 <strong class="font-bold">Alert:</strong>
                 <span class="block sm:inline">Your cart is empty.</span>
                 <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-                    <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20">
-                        <title>Close</title>
-                        <path
-                            d="M14.348 5.652a1 1 0 0 0-1.414 0L10 8.586 6.066 4.652a1 1 0 0 0-1.414 1.414L8.586 10l-3.934 3.934a1 1 0 0 0 1.414 1.414L10 11.414l3.934 3.934a1 1 0 0 0 1.414-1.414L11.414 10l3.934-3.934a1 1 0 0 0 0-1.414z" />
-                    </svg>
+                    <button type="button" class="text-red-700 hover:text-red-900" onclick="closeAlert(this)">
+                        <svg class="fill-current h-4 w-4" role="button" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20">
+                            <title>Close</title>
+                            <path
+                                d="M14.348 5.652a1 1 0 0 0-1.414 0L10 8.586 6.066 4.652a1 1 0 0 0-1.414 1.414L8.586 10l-3.934 3.934a1 1 0 0 0 1.414 1.414L10 11.414l3.934 3.934a1 1 0 0 0 1.414-1.414L11.414 10l3.934-3.934a1 1 0 0 0 0-1.414z" />
+                        </svg>
+                    </button>
                 </span>
             </div>
         @endif
+
+        @if (session('game_added_to_cart'))
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative alert"
+                role="alert">
+                <strong class="font-bold">Success:</strong>
+                <span class="block sm:inline">Game has been added to your cart.</span>
+                <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                    <button type="button" class="text-green-700 hover:text-green-900" onclick="closeAlert(this)">
+                        <svg class="fill-current h-4 w-4" role="button" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20">
+                            <title>Close</title>
+                            <path
+                                d="M14.348 5.652a1 1 0 0 0-1.414 0L10 8.586 6.066 4.652a1 1 0 0 0-1.414 1.414L8.586 10l-3.934 3.934a1 1 0 0 0 1.414 1.414L10 11.414l3.934 3.934a1 1 0 0 0 1.414-1.414L11.414 10l3.934-3.934a1 1 0 0 0 0-1.414z" />
+                        </svg>
+                    </button>
+                </span>
+            </div>
+        @endif
+
+
         <section class="max-w-5xl mx-auto mb-10">
             <div>
                 <h1
@@ -190,6 +212,10 @@
         function toggleGameModal(gameId) {
             const modal = document.getElementById('gameModal_' + gameId);
             modal.classList.toggle('hidden');
+        }
+
+        function closeAlert(button) {
+            button.closest('.alert').remove();
         }
     </script>
 @endif
