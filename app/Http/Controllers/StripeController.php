@@ -32,6 +32,10 @@ class StripeController extends Controller
             ];
         }
 
+        if (empty($lineItems)) {
+            return redirect()->route('store-view')->with('empty_cart', true);
+        }
+
         $session = \Stripe\Checkout\Session::create([
             'line_items' => $lineItems,
             'payment_method_types' => ['card'],
@@ -42,6 +46,7 @@ class StripeController extends Controller
 
         return redirect()->away($session->url);
     }
+
 
     public function success()
     {
