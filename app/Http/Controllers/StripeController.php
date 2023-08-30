@@ -78,6 +78,8 @@ class StripeController extends Controller
 
         Mail::to($userEmail)->send(new PurchaseConfirmation($cartItems, $gameKeys));
 
+        DB::table('carts')->where('user_id', auth()->user()->id)->delete(); // Remove my items from cart
+
         return view('stripe/success', ['gameKeys' => $gameKeys]);
     }
 }
