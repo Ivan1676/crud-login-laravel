@@ -10,6 +10,7 @@ services:
       MYSQL_PASSWORD: esgs*FMNI80sgvnD8
     ports:
       - "33306:3306"
+      - "5173:5173"
     volumes:
       - mysql_data:/var/lib/mysql
 
