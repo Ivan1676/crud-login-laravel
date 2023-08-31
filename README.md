@@ -1,4 +1,4 @@
-## Steps just in case not working (provisional)
+## Steps just in case not working (working on it)
 -Composer install
 - Not sure yet but maybe install composer ui in another device
 <br />
@@ -18,6 +18,11 @@
 -npm install -D tailwindcss postcss autoprefixer
 <br />
 -npx tailwindcss init -p
+
+## Laravel breeze
+composer require laravel/breeze --dev
+php artisan breeze:install
+¡AFTER THIS ALL ROUTES ARE OVERWRITE, MAKE SURE TO WRITE THE ROUTES AGAIN
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
