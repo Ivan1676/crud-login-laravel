@@ -20,9 +20,12 @@
 -npx tailwindcss init -p
 
 ## Laravel breeze
-composer require laravel/breeze --dev
-php artisan breeze:install
+-composer require laravel/breeze --dev
+<br />
+-php artisan breeze:install
+<br />
 ¡AFTER THIS ALL ROUTES ARE OVERWRITE, MAKE SURE TO WRITE THE ROUTES AGAIN
+<br /><br />
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
